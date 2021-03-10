@@ -18,8 +18,16 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.arq_control.ui.slideshow.SlideshowFragment"
+        android:id="@+id/nav_finalizadas"
+        android:name="com.arq_control.ui.finalizadas.FinalizadasFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_finalizadas" />
+
+    <fragment
+        android:id="@+id/nav_obras"
+        android:name="com.arq_control.ui.obras.ObrasFragment"
+        android:label="@string/menu_obras"
+        tools:layout="@layout/fragment_obras" />
+
+
 </navigation>

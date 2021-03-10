@@ -1,12 +1,11 @@
-package com.arq_control;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.arq_control.ui;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.arq_control.R;
 import com.arq_control.ui.login.LoginActivity;
 
 public class SplashScreen extends Activity {

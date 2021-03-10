@@ -15,40 +15,39 @@
 
     <ImageView
         android:id="@+id/imageViewLogoR"
-        android:layout_width="136dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="5dp"
         android:contentDescription="@string/nav_header_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.698"
-        app:srcCompat="@mipmap/logo_40_round" />
+        app:srcCompat="@mipmap/logo_42_round" />
 
     <TextView
         android:id="@+id/textView_name"
-        android:layout_width="116dp"
+        android:layout_width="131dp"
         android:layout_height="46dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView_mail"
+        app:layout_constraintStart_toEndOf="@+id/imageViewLogoR"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
+        android:layout_width="130dp"
+        android:layout_height="21dp"
         android:text="@string/nav_header_subtitle"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewLogoR"
+        app:layout_constraintEnd_toEndOf="@+id/textView_name"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView_name"
         tools:ignore="MissingConstraints" />
 

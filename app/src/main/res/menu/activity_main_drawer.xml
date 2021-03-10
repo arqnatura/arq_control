@@ -6,15 +6,40 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_obras"
+            android:icon="@drawable/ic_menu_build"
+            android:title="Nueva Visita" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery_bookmark_add"
+            android:title="@string/obra_en_curso" />
+        <item
+            android:id="@+id/nav_finalizadas"
+            android:icon="@drawable/ic_menu_gallery_bookmark"
+            android:title="@string/obras_finalizadas" />
     </group>
+
+    <item android:title="Comunicaciones" >
+        <menu>
+            <item
+                android:id="@+id/nav_politica"
+                android:icon="@drawable/ic_menu_layers_24"
+                android:title="@string/Politica" />
+            <item
+                android:id="@+id/nav_ayuda"
+                android:icon="@drawable/ic_menu_bookmark_24"
+                android:title="@string/manual_de_uso" />
+            <item
+                android:id="@+id/nav_compartir"
+                android:icon="@drawable/ic_menu_share_24"
+                android:title="@string/compartir" />
+            <item
+                android:id="@+id/nav_salir"
+                android:icon="@drawable/ic_menu_exit_to_app_24"
+                android:title="@string/salir" />
+        </menu>
+    </item>
 </menu>

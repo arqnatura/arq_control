@@ -25,8 +25,6 @@ import android.widget.Toast;
 
 import com.arq_control.MainActivity;
 import com.arq_control.R;
-import com.arq_control.ui.login.LoginViewModel;
-import com.arq_control.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -39,9 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.TextEmailAddress);
+        final EditText usernameEditText = findViewById(R.id.Email);
         final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
+        final Button loginButton = findViewById(R.id.buttonRegistro);
+        final Button entradaButton = findViewById(R.id.buttonEntrada);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {

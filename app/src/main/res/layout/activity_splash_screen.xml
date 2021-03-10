@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:background="@color/purple_200"
     android:contentDescription="@string/app_name"
-    tools:context=".SplashScreen">
+    tools:context=".ui.SplashScreen">
 
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:src="@mipmap/logo_2021_003"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/Logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

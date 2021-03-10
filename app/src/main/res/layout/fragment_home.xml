@@ -4,42 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_200"
     tools:context=".ui.home.HomeFragment">
 
     <Button
-        android:id="@+id/buttonEntrada"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:text="@string/entrar"
+        android:id="@+id/buttonAgenda"
+        android:layout_width="169dp"
+        android:layout_height="149dp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@mipmap/arq_agenda_36dp"
+        android:text="@string/operadores"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="441dp" />
+        app:layout_constraintStart_toEndOf="@+id/buttonArchivo"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCurso"
+        app:layout_constraintVertical_bias="0.253" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="284dp"
-        android:layout_height="237dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintEnd_toEndOf="parent"
+    <Button
+        android:id="@+id/buttonArchivo"
+        android:layout_width="169dp"
+        android:layout_height="149dp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@mipmap/arq_archivo_36dp"
+        android:text="@string/finalizadas"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAgenda"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo_2021_004" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonPlus"
+        app:layout_constraintVertical_bias="0.253" />
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:layout_marginBottom="44dp"
-        android:text="@string/fragment_home"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEntrada"
+    <Button
+        android:id="@+id/buttonCurso"
+        android:layout_width="169dp"
+        android:layout_height="149dp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@mipmap/arq_casa_36dp"
+        android:text="@string/en_curso"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonAgenda"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonPlus"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPlus"
+        android:layout_width="169dp"
+        android:layout_height="149dp"
+        android:background="@android:color/transparent"
+        android:drawableTop="@mipmap/arq_plus_36dp"
+        android:text="@string/obra_nueva"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/buttonArchivo"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCurso"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main"/>
+    <include layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -29,6 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:contentDescription="@string/Add"
+        android:foreground="@drawable/ic_baseline_add_24"
+        app:backgroundTint="@color/purple_500"
+        app:maxImageSize="40dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

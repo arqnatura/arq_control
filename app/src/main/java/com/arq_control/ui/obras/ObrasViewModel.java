@@ -1,16 +1,16 @@
-package com.arq_control.ui.slideshow;
+package com.arq_control.ui.obras;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
+public class ObrasViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public ObrasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("No has creado obras nuevas");
     }
 
     public LiveData<String> getText() {
