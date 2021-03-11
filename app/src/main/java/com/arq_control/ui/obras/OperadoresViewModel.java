@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ObrasViewModel extends ViewModel {
+public class OperadoresViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final MutableLiveData<String> mText;
 
-    public ObrasViewModel() {
+    public OperadoresViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("No has creado obras nuevas");
+        mText.setValue("Listado de operadores");
     }
 
     public LiveData<String> getText() {

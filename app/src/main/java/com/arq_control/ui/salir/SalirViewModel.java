@@ -1,19 +1,20 @@
-package com.arq_control.ui.gallery;
+package com.arq_control.ui.salir;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class SalirViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public SalirViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Galería de Obras en Curso");
+        //mText.setValue("Salir de la aplicación");
     }
 
     public LiveData<String> getText() {
         return mText;
     }
 }
+

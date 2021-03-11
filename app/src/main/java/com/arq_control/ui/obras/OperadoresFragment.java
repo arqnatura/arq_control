@@ -15,18 +15,17 @@ import android.widget.TextView;
 
 import com.arq_control.R;
 
-public class ObrasFragment extends Fragment {
+public class OperadoresFragment extends Fragment {
 
-    private ObrasViewModel obrasViewModel;
+    private OperadoresViewModel operadoresViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        obrasViewModel =
-                new ViewModelProvider(this).get(ObrasViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_obras, container, false);
+        operadoresViewModel = new ViewModelProvider(this).get(OperadoresViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_operadores, container, false);
         final TextView textView = root.findViewById(R.id.text_obras);
 
-        obrasViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        operadoresViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

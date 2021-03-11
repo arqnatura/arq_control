@@ -6,11 +6,11 @@ import androidx.lifecycle.ViewModel;
 
 public class FinalizadasViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private final MutableLiveData<String> mText;
 
     public FinalizadasViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("No hay obras finalizadas");
+        mText.setValue("Galería de obras finalizadas");
     }
 
     public LiveData<String> getText() {

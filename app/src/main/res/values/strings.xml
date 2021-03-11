@@ -8,8 +8,10 @@
     <string name="action_settings">Settings</string>
     <string name="menu_home">Principal</string>
     <string name="menu_gallery">Listado Obras</string>
-    <string name="menu_slideshow">Listado Operadores</string>
-    <string name="menu_obras">Obras Finalizadas</string>
+    <string name="menu_obras_finales">Obras Finalizadas</string>
+    <string name="menu_operadores">Listado Operadores</string>
+    <string name="menu_visita">Nueva Visita Obra</string>
+    <string name="menu_salir">Salir Aplicación</string>
 
     <string name="email">Email</string>
     <string name="contrase_a">Contraseña</string>
@@ -17,7 +19,6 @@
     <string name="registro">Registro</string>
     <string name="v1_0">v1.0</string>
     <string name="todo">logo00</string>
-
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña</string>
@@ -50,4 +51,9 @@
     <string name="large_text">
         "Visita de obra a fecha:   /   /\n\n"
     </string>
+    <string name="nueva_visita">Nueva Visita</string>
+    <string name="Cuestion_Salir">Realmente desea salir de la aplicación?</string>
+    <string name="BotonSalir">Salir</string>
+    <string name="BotonRegresar">Regresar</string>
+    <string name="comunicaciones">Comunicaciones</string>
 </resources>

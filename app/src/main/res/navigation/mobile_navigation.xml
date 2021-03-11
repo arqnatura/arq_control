@@ -20,14 +20,19 @@
     <fragment
         android:id="@+id/nav_finalizadas"
         android:name="com.arq_control.ui.finalizadas.FinalizadasFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_obras_finales"
         tools:layout="@layout/fragment_finalizadas" />
 
     <fragment
-        android:id="@+id/nav_obras"
-        android:name="com.arq_control.ui.obras.ObrasFragment"
-        android:label="@string/menu_obras"
-        tools:layout="@layout/fragment_obras" />
+        android:id="@+id/nav_operadores"
+        android:name="com.arq_control.ui.obras.OperadoresFragment"
+        android:label="@string/menu_operadores"
+        tools:layout="@layout/fragment_operadores" />
 
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.arq_control.ui.salir.SalirFragment"
+        android:label="@string/menu_salir"
+        tools:layout="@layout/fragment_salir" />
 
 </navigation>

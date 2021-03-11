@@ -9,9 +9,9 @@
             android:icon="@drawable/ic_menu_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_obras"
+            android:id="@+id/nav_visita"
             android:icon="@drawable/ic_menu_build"
-            android:title="Nueva Visita" />
+            android:title="@string/menu_visita" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery_bookmark_add"
@@ -20,9 +20,13 @@
             android:id="@+id/nav_finalizadas"
             android:icon="@drawable/ic_menu_gallery_bookmark"
             android:title="@string/obras_finalizadas" />
+        <item
+            android:id="@+id/nav_operadores"
+            android:icon="@drawable/ic_menu_bookmarks"
+            android:title="@string/menu_operadores" />
     </group>
 
-    <item android:title="Comunicaciones" >
+    <item android:title="@string/comunicaciones" >
         <menu>
             <item
                 android:id="@+id/nav_politica"
