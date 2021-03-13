@@ -16,6 +16,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,9 @@ public class LoginActivity extends AppCompatActivity {
         final Button loginButton = findViewById(R.id.buttonRegistro);
         final Button entradaButton = findViewById(R.id.buttonEntrada);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
+        // Evitamos la salida del teclado por defecto, hasta que el usuario lo pida.
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override

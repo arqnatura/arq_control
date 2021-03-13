@@ -17,7 +17,7 @@
         android:singleLine="false"
         android:text="@string/Cuestion_Salir"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         android:verticalScrollbarPosition="defaultPosition"
         app:layout_constraintEnd_toEndOf="parent"

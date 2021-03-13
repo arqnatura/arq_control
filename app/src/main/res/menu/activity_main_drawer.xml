@@ -25,9 +25,7 @@
             android:icon="@drawable/ic_menu_bookmarks"
             android:title="@string/menu_operadores" />
     </group>
-
-    <item android:title="@string/comunicaciones" >
-        <menu>
+    <group android:id="@string/comunicaciones" >
             <item
                 android:id="@+id/nav_politica"
                 android:icon="@drawable/ic_menu_layers_24"
@@ -40,10 +38,11 @@
                 android:id="@+id/nav_compartir"
                 android:icon="@drawable/ic_menu_share_24"
                 android:title="@string/compartir" />
+    </group>
+    <group android:id="@+id/salir">
             <item
                 android:id="@+id/nav_salir"
                 android:icon="@drawable/ic_menu_exit_to_app_24"
                 android:title="@string/salir" />
-        </menu>
-    </item>
+    </group>
 </menu>
