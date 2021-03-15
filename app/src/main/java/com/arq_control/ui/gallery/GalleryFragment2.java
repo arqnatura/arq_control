@@ -1,4 +1,4 @@
-package com.arq_control.ui.finalizadas;
+package com.arq_control.ui.gallery;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,18 +12,17 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.arq_control.R;
 
-public class FinalizadasFragment extends Fragment {
+public class GalleryFragment2 extends Fragment {
 
-    private FinalizadasViewModel finalizadasViewModel;
+    private GalleryViewModel galleryViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        finalizadasViewModel =
-                new ViewModelProvider(this).get(FinalizadasViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_finalizadas, container, false);
-        final TextView textView = root.findViewById(R.id.text_finalizadas);
-
-        finalizadasViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        galleryViewModel =
+                new ViewModelProvider(this).get(GalleryViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_gallery2, container, false);
+        final TextView textView = root.findViewById(R.id.text_gallery);
+        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -31,6 +30,4 @@ public class FinalizadasFragment extends Fragment {
         });
         return root;
     }
-
-
 }

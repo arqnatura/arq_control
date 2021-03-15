@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +8,7 @@
 
     <TextView
         android:id="@+id/textViewExit"
-        android:layout_width="324dp"
+        android:layout_width="280dp"
         android:layout_height="88dp"
         android:layout_marginTop="124dp"
         android:contentDescription="@string/salir"
@@ -17,7 +16,7 @@
         android:singleLine="false"
         android:text="@string/Cuestion_Salir"
         android:textColor="@color/white"
-        android:textSize="26sp"
+        android:textSize="26dp"
         android:textStyle="bold"
         android:verticalScrollbarPosition="defaultPosition"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,14 +30,16 @@
         android:layout_height="155dp"
         android:layout_marginTop="30dp"
         android:background="@android:color/transparent"
-        android:drawableTop="@mipmap/arq_salir_36dp"
-        android:onClick="initAcitivitySalir"
         android:clickable="true"
+        android:drawableTop="@mipmap/arq_salir_36dp"
         android:focusable="true"
+        android:onClick="initAcitivitySalir"
         android:text="@string/BotonSalir"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textViewExit"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRegresar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewExit" />
 
     <Button
@@ -49,10 +50,13 @@
         android:drawableTop="@mipmap/arq_regresar_36dp"
         android:onClick="initAcitivityRegresar"
         android:text="@string/BotonRegresar"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/buttonSalir"
-        app:layout_constraintEnd_toEndOf="@+id/textViewExit"
-        app:layout_constraintTop_toTopOf="@+id/buttonSalir" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonSalir"
+        app:layout_constraintTop_toTopOf="@+id/buttonSalir"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@
     <string name="Politica">Política de privacidad</string>
     <string name="manual_de_uso">Manual de Uso</string>
     <string name="compartir">Compartir</string>
-    <string name="Cuestion_Salir">Realmente desea salir de la aplicación?</string>
+    <string name="Cuestion_Salir">¿Realmente desea salir de la aplicación?</string>
     <string name="BotonRegresar">Regresar</string>
+    <string name="menu_obras">Listado Obras</string>
 </resources>

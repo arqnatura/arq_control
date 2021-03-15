@@ -52,8 +52,10 @@
         "Visita de obra a fecha:   /   /\n\n"
     </string>
     <string name="nueva_visita">Nueva Visita</string>
-    <string name="Cuestion_Salir">Realmente desea salir de la aplicación?</string>
+    <string name="Cuestion_Salir">¿Realmente desea salir de la aplicación?</string>
     <string name="BotonSalir">Salir</string>
     <string name="BotonRegresar">Regresar</string>
     <string name="comunicaciones">Comunicaciones</string>
+    <string name="camara">Camara</string>
+    <string name="menu_obras">Listado Obras</string>
 </resources>
