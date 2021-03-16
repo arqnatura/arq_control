@@ -1,10 +1,9 @@
-package com.arq_control.ui;
+package com.arq_control.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 
 import com.arq_control.R;
 import com.arq_control.ui.login.LoginActivity;
