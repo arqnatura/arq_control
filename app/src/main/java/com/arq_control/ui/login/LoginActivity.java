@@ -24,12 +24,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.arq_control.MainActivity;
+import com.arq_control.activities.MainActivity;
 import com.arq_control.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+
+    EditText usernameEditText;
+    EditText passwordEditText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.Email);
-        final EditText passwordEditText = findViewById(R.id.password);
+        usernameEditText = (EditText) findViewById(R.id.email);
+        passwordEditText = (EditText) findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.buttonRegistro);
         final Button entradaButton = findViewById(R.id.buttonEntrada);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
@@ -124,6 +127,23 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+ /*   public void doLogin (View view){
+        String email = usernameEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        if (email.equals("angel@arqnatura.com") && password.equals("12345")) {
+            // Login correcto
+            Toast.makeText(this, "Bienvenido a la app Arq Control", Toast.LENGTH_SHORT);
+
+            Intent i = new Intent ( LoginActivity.this, MainActivity.class);
+            startActivity(i);
+        } else {
+            Toast.makeText(this, "Usuario y/o contraseña incorrectos.", Toast.LENGTH_SHORT);
+        }
+
+   }
+ */
+    // Para no tener que acceder con email y contraseña durante las pruebas
     public void initMainActivity(View view){
 
         Intent intentMainActivity = new Intent ( this, MainActivity.class);
@@ -131,6 +151,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Bienvenido a la app Arq Control", Toast.LENGTH_SHORT);
     }
+
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();

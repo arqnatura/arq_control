@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Arq_control">
 
         <activity
-            android:name=".ui.SplashScreen"
+            android:name=".activities.SplashScreen"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Arq_control.NoActionBar">
         </activity>

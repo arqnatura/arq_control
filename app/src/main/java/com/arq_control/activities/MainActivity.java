@@ -1,4 +1,4 @@
-package com.arq_control;
+package com.arq_control.activities;
 
 
 import android.content.Intent;
@@ -10,8 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.arq_control.R;
 import com.arq_control.ui.gallery.OnObraInteractionListener;
-import com.arq_control.ui.obras.MiAdaptadorObras;
 import com.arq_control.ui.gallery.Obra;
 import com.arq_control.ui.obras.VisitaActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,7 +26,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnObraInteractionListener {
