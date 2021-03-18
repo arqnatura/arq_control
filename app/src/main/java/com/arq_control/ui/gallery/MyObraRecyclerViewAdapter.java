@@ -28,6 +28,33 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         mListener = listener;
     }
 
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public final View mView;
+        public final TextView textViewPromotor;
+        public final TextView textViewTitulo;
+        public final TextView textViewTipo;
+        public final TextView textViewVisitas;
+        public final ImageView imageViewCamara;
+        public final TextView textViewReferencia;
+        public ObraDB mItem;
+
+        public ViewHolder(View view) {
+            super(view);
+            mView = view;
+            textViewPromotor = (TextView) view.findViewById(R.id.textViewPromotor);
+            textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
+            textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
+            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
+            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
+            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + " '" + textViewTitulo.getText() + "'";
+        }
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -42,6 +69,7 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         holder.textViewTitulo.setText(holder.mItem.getTitulo());
         holder.textViewTipo.setText(holder.mItem.getTipoObra());
         holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" visitas");
+        holder.textViewReferencia.setText(holder.mItem.getReferencia());
 
         Glide.with(ctx)
                 .load(holder.mItem.getAlmacenFoto())
@@ -59,28 +87,4 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         return mValues.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView textViewPromotor;
-        public final TextView textViewTitulo;
-        public final TextView textViewTipo;
-        public final TextView textViewVisitas;
-        public final ImageView imageViewCamara;
-        public ObraDB mItem;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            textViewPromotor = (TextView) view.findViewById(R.id.textViewPromotor);
-            textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
-            textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
-            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
-            imageViewCamara= (ImageView) view.findViewById(R.id.imageViewCamara);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + textViewTitulo.getText() + "'";
-        }
-    }
 }

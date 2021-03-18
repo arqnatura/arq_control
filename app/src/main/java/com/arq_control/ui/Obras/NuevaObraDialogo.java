@@ -23,8 +23,6 @@ public class NuevaObraDialogo extends DialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         builder = new AlertDialog.Builder(getActivity());
-
-        // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.dialogo_nueva_obra, null));
         builder.setTitle("Nueva Obra")
@@ -32,16 +30,12 @@ public class NuevaObraDialogo extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(getActivity(), "Obra guardada", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
-                        mListener.onObraGuardarClickListener();
-                    }
+                        mListener.onObraGuardarClickListener(); }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // Cancelar > cerrar el cuadro de diálogo
-                        dialog.dismiss();
-                    }
+                        dialog.dismiss(); }
                 });
-        // Create the AlertDialog object and return it
         return builder.create();
     }
 

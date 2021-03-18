@@ -11,15 +11,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.arq_control.R;
-import com.arq_control.ui.gallery.ObrasFragment;
 import com.arq_control.ui.gallery.OnObraInteractionListener;
 import com.arq_control.models.ObraDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -133,11 +131,13 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
     }
     public void initActivityArchivo(View view){
         Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, VisitaActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
     public void initActivityAgenda(View view){
         Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
     }
 
     // Boton regresar y cerrar toda la aplicación.

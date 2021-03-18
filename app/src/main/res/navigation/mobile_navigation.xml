@@ -12,6 +12,12 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/nav_nueva"
+        android:name="com.arq_control.ui.finalizadas.FinalizadasFragment"
+        android:label="@string/obra_nueva"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
         android:id="@+id/nav_obras"
         android:name="com.arq_control.ui.gallery.ObrasFragment"
         android:label="@string/menu_obras"

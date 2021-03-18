@@ -1,4 +1,4 @@
-package com.arq_control.ui.operadores;
+package com.arq_control.ui.gallery;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -41,11 +41,15 @@ public class MiAdaptadorObras extends ArrayAdapter<ObraDB> {
             TextView textViewTitulo = (TextView) v.findViewById(R.id.textViewTitulo);
             TextView textViewTipoObra = (TextView) v.findViewById(R.id.textViewTipo);
             TextView textViewVisita = (TextView) v.findViewById(R.id.textViewVisitas);
+            TextView textViewPromotor = (TextView) v.findViewById(R.id.textViewPromotor);
+            TextView textViewReferencia = (TextView) v.findViewById(R.id.textViewReferencia);
 
             // Hacer un set del elemento actual en los elementos de la IU
             textViewTitulo.setText(elementoActual.getTitulo());
             textViewTipoObra.setText(elementoActual.getTipoObra());
             textViewVisita.setText(elementoActual.getNumeroVisitas()+" visitas");
+            textViewPromotor.setText(elementoActual.getPromotor());
+            textViewReferencia.setText(elementoActual.getReferencia());
 
             return v;
     }

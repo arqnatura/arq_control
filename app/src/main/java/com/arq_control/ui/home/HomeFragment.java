@@ -12,8 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.arq_control.R;
+import com.arq_control.ui.Obras.NuevaObraDialogo;
 import com.arq_control.ui.finalizadas.FinalizadasFragment;
 import com.arq_control.ui.gallery.ObrasFragment;
+import com.arq_control.ui.operadores.OperadoresFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -33,20 +35,26 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    public void onClick(View v) {
+ /*   public void onClick(View v) {
         switch (v.getId()){
-            case R.id.buttonCurso:
+            case R.id.buttonPlus:
                 cargarFragment(new ObrasFragment());
                 break;
-
-            case R.id.buttonArchivo:
+            case R.id.buttonCurso:
                 cargarFragment(new FinalizadasFragment());
                 break;
+            case R.id.buttonArchivo:
+                cargarFragment(new NuevaObraDialogo());
+                break;
+            case R.id.buttonAgenda:
+                cargarFragment(new OperadoresFragment());
+                break;
         }
+
     }
 
     private void cargarFragment(Fragment fragment) {
         FragmentTransaction ft =  getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.mobile_navigation, fragment).addToBackStack(null).commit();
-    }
+    }*/
 }

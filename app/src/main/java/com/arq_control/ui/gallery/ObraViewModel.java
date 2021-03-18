@@ -10,7 +10,7 @@ public class ObraViewModel extends ViewModel {
 
     public ObraViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("Galería de Obras en Curso");
+        mText.setValue("Listado de Obras en Curso");
     }
 
     public LiveData<String> getText() {

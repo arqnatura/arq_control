@@ -9,7 +9,6 @@ public class ObraDB extends RealmObject {
 
     @PrimaryKey
     private int id;
-    private String referencia;
     private String promotor;
     private String titulo;
     private String tipoObra;
@@ -18,22 +17,24 @@ public class ObraDB extends RealmObject {
     private Date fechaFinal;
     private String almacenFoto;
     private int numeroVisitas;
+    private String referencia;
 
     public ObraDB() {
         this.id = MyApp.ObraID.incrementAndGet();
     }
 
-    public ObraDB(String promotor, String titulo, String tipoObra, String almacenFoto, int numeroVisitas) {
+    public ObraDB(String promotor, String titulo, String tipoObra, String almacenFoto, int numeroVisitas, String referencia) {
         this.id = MyApp.ObraID.incrementAndGet();
         this.promotor = promotor;
         this.titulo = titulo;
         this.tipoObra = tipoObra;
         this.almacenFoto = almacenFoto;
         this.numeroVisitas = numeroVisitas;
+        this.referencia = referencia;
     }
 
     public ObraDB(String referencia, String promotor, String titulo, String tipoObra,
-                  String direccion, Date fechaInicio, Date fechaFinal, String almacenFoto, int nuemeroVisitas) {
+                  String direccion, Date fechaInicio, Date fechaFinal, String almacenFoto, int numeroVisitas) {
         this.id = MyApp.ObraID.incrementAndGet();
         this.referencia = referencia;
         this.promotor = promotor;
@@ -43,7 +44,7 @@ public class ObraDB extends RealmObject {
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
         this.almacenFoto = almacenFoto;
-        this.numeroVisitas = nuemeroVisitas;
+        this.numeroVisitas = numeroVisitas;
     }
 
     public long getId() { return id; }
@@ -105,4 +106,6 @@ public class ObraDB extends RealmObject {
     public void setNumeroVisitas(int numeroVisitas) {
         this.numeroVisitas = numeroVisitas;
     }
+
+
 }

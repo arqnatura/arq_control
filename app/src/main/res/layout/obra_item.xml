@@ -15,18 +15,6 @@
         android:layout_height="match_parent"
         android:padding="4dp">
 
-        <TextView
-            android:id="@+id/textViewTitulo"
-            android:layout_width="139dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:contentDescription="Titulo Obra"
-            android:text="Titulo Obra"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/textViewPromotor"
-            app:layout_constraintTop_toTopOf="@+id/textViewPromotor" />
-
         <ImageView
             android:id="@+id/imageViewCamara"
             android:layout_width="64dp"
@@ -42,7 +30,7 @@
 
         <TextView
             android:id="@+id/textViewPromotor"
-            android:layout_width="139dp"
+            android:layout_width="280dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
@@ -54,8 +42,20 @@
             app:layout_constraintTop_toTopOf="@+id/imageViewCamara" />
 
         <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="220dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:contentDescription="Titulo Obra"
+            android:text="Titulo Obra"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/textViewPromotor"
+            app:layout_constraintTop_toTopOf="@+id/textViewPromotor" />
+
+        <TextView
             android:id="@+id/textViewTipo"
-            android:layout_width="140dp"
+            android:layout_width="150dp"
             android:layout_height="19dp"
             android:layout_marginTop="10dp"
             android:contentDescription="Tipo de Obra"
@@ -85,5 +85,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageViewVisita"
             app:layout_constraintStart_toEndOf="@+id/imageViewVisita"
             app:layout_constraintTop_toTopOf="@+id/imageViewVisita" />
+
+        <TextView
+            android:id="@+id/textViewReferencia"
+            android:layout_width="220dp"
+            android:layout_height="20dp"
+            android:contentDescription="Referencia"
+            android:text="Referencia"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/textViewTitulo"
+            app:layout_constraintTop_toTopOf="@+id/textViewTipo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

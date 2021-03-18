@@ -44,10 +44,10 @@ public class ObrasFragment extends Fragment {
             // Lista de Obras
             obrasList = new ArrayList<>();
             obrasList = new ArrayList<>();
-            obrasList.add(new ObraDB("Souto de Moura","Viv. Unifamiliar", "ObraDB nueva", "https://tinyurl.com/yer7qpnq", 16));
-            obrasList.add(new ObraDB("Alejandro De La Sota","Viv. Plurifamiliar", "Rehabilitación", "E://TALIARTE//Mapa Radon Canarias_00.JPG", 10));
-            obrasList.add(new ObraDB("Zaha Hadid","Vivienda Duplex", "Reforma", "https://tinyurl.com/yf8elgmk", 5));
-            obrasList.add(new ObraDB("Mies Van Der Rohe","Viv. Unifamiliar", "Ampliación", "https://tinyurl.com/yzvfufjk", 8));
+            obrasList.add(new ObraDB("Souto de Moura","Viv. Unifamiliar", "ObraDB nueva", "https://tinyurl.com/yer7qpnq", 16, "VIV_03"));
+            obrasList.add(new ObraDB("Alejandro De La Sota","Viv. Plurifamiliar", "Rehabilitación", "E:\\TALIARTE\\Mapa Radon Canarias_00.JPG", 10, "VIV_05"));
+            obrasList.add(new ObraDB("Zaha Hadid","Vivienda Duplex", "Reforma", "https://tinyurl.com/yf8elgmk", 5, "VIV_18"));
+            obrasList.add(new ObraDB("Mies Van Der Rohe","Viv. Unifamiliar", "Ampliación", "https://tinyurl.com/yzvfufjk", 8, "VIV_25"));
 
             recyclerView.setAdapter(new MyObraRecyclerViewAdapter(getActivity(), obrasList, mListener));
         }
