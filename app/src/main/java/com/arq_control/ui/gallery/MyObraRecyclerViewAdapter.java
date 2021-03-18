@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.arq_control.R;
+import com.arq_control.models.ObraDB;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -17,11 +18,11 @@ import java.util.List;
 
 public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Obra> mValues;
+    private final List<ObraDB> mValues;
     private OnObraInteractionListener mListener;
     private Context ctx;
 
-    public MyObraRecyclerViewAdapter(Context context, List<Obra> items, OnObraInteractionListener listener) {
+    public MyObraRecyclerViewAdapter(Context context, List<ObraDB> items, OnObraInteractionListener listener) {
         ctx = context;
         mValues = items;
         mListener = listener;
@@ -65,7 +66,7 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         public final TextView textViewTipo;
         public final TextView textViewVisitas;
         public final ImageView imageViewCamara;
-        public Obra mItem;
+        public ObraDB mItem;
 
         public ViewHolder(View view) {
             super(view);

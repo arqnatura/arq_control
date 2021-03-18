@@ -12,16 +12,10 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.arq_control.ui.gallery.GalleryFragment"
+        android:id="@+id/nav_obras"
+        android:name="com.arq_control.ui.gallery.ObrasFragment"
         android:label="@string/menu_obras"
         tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_gallery2"
-        android:name="com.arq_control.ui.gallery.GalleryFragment2"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery2" />
 
     <fragment
         android:id="@+id/nav_finalizadas"
@@ -31,7 +25,7 @@
 
     <fragment
         android:id="@+id/nav_operadores"
-        android:name="com.arq_control.ui.obras.OperadoresFragment"
+        android:name="com.arq_control.ui.operadores.OperadoresFragment"
         android:label="@string/menu_operadores"
         tools:layout="@layout/fragment_operadores" />
 

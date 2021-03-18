@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.arq_control.R;
-import com.arq_control.ui.login.LoginActivity;
 
 public class SplashScreen extends Activity {
 

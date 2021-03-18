@@ -11,13 +11,15 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.arq_control.R;
+import com.arq_control.ui.gallery.ObrasFragment;
 import com.arq_control.ui.gallery.OnObraInteractionListener;
-import com.arq_control.ui.gallery.Obra;
-import com.arq_control.ui.obras.VisitaActivity;
+import com.arq_control.models.ObraDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -31,7 +33,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements OnObraInteractionListener {
 
     ListView lista;
-    List<Obra> obrasList;
+    List<ObraDB> obrasList;
+
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -42,25 +45,32 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Código de acción del botón flotante +
-        FloatingActionButton fab = findViewById(R.id.fabFoto);
+        // Códigos de acciónes de los botónes flotantes +
+/*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabObra);
+        fab.setOnClickListener((view) -> {
+                dialogoNuevaObra = new NuevaObraDialogo();
+                dialogoNuevaObra.show(getSupportFragmentManager(),"NuevaObraDialogo");
+        });
+*/
+        FloatingActionButton fab = findViewById(R.id.fabObra);
         fab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Nueva visita de obra", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Nueva Obra", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent miIntent = new Intent(MainActivity.this, VisitaActivity.class);
                 startActivity(miIntent);
             }
         });
 
+
         // Código del NavegationDrawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
             // Pasando cada ID de menú como un conjunto de ID porque cada menú
             // debe considerarse como destinos de nivel superior.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,
-                R.id.nav_gallery, R.id.nav_gallery2, R.id.nav_finalizadas, R.id.nav_operadores, R.id.nav_salir)
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_nueva,
+                R.id.nav_obras, R.id.nav_finalizadas, R.id.nav_operadores, R.id.nav_salir)
                 .setDrawerLayout(drawer)
                 .build();
 
@@ -117,37 +127,41 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
                 || super.onSupportNavigateUp();
     }
 
-    public void initAcitivityVisita(View view){
-        Toast.makeText(this, "Crea una nueva obra...", Toast.LENGTH_LONG).show();
-        Intent miIntent = new Intent(MainActivity.this, VisitaActivity.class);
+    public void initActivityObraNueva(View view){
+        Toast.makeText(this, "Crea una nueva obra...", Toast.LENGTH_SHORT).show();
+        Intent miIntent = new Intent(this, VisitaActivity.class);
         startActivity(miIntent);
     }
-    public void initAcitivityCurso(View view){
-        Toast.makeText(this, "Ver Listado de Obras en Curso...", Toast.LENGTH_LONG).show();
+    public void initActivityObraCurso(View view){
+        Toast.makeText(this, "Ver Listado de Obras en Curso...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, ObrasActivity.class);
+        startActivity(i);
     }
-    public void initAcitivityArchivo(View view){
-        Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_LONG).show();
+
+
+    public void initActivityArchivo(View view){
+        Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_SHORT).show();
     }
-    public void initAcitivityAgenda(View view){
-        Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_LONG).show();
+    public void initActivityAgenda(View view){
+        Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
     }
 
     // Boton regresar y cerrar toda la aplicación.
-    public void initAcitivitySalir(View view){
-        Toast.makeText(this, "Hasta la próxima. Chao!!", Toast.LENGTH_LONG).show();
+    public void initActivitySalir(View view){
+        Toast.makeText(this, "Hasta la próxima. Chao!!", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-    public void initAcitivityRegresar(View view){
+    public void initActivityRegresar(View view){
         onBackPressed();
-        Toast.makeText(this, "Regresa a la anterior pantalla.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Regresa a la anterior pantalla.", Toast.LENGTH_SHORT).show();
     }
 
 
     @Override
-    public void OnObraClick(Obra obra) {
+    public void OnObraClick(ObraDB obraDB) {
 
     }
 

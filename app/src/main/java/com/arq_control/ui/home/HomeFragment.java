@@ -8,9 +8,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.arq_control.R;
+import com.arq_control.ui.finalizadas.FinalizadasFragment;
+import com.arq_control.ui.gallery.ObrasFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -28,5 +31,22 @@ public class HomeFragment extends Fragment {
             }
         });
         return root;
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonCurso:
+                cargarFragment(new ObrasFragment());
+                break;
+
+            case R.id.buttonArchivo:
+                cargarFragment(new FinalizadasFragment());
+                break;
+        }
+    }
+
+    private void cargarFragment(Fragment fragment) {
+        FragmentTransaction ft =  getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.mobile_navigation, fragment).addToBackStack(null).commit();
     }
 }

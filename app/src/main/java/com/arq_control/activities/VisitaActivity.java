@@ -1,4 +1,4 @@
-package com.arq_control.ui.obras;
+package com.arq_control.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;

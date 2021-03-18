@@ -13,15 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.arq_control.R;
+import com.arq_control.models.ObraDB;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GalleryFragment extends Fragment {
+public class ObrasFragment extends Fragment {
     OnObraInteractionListener mListener;
-    List<Obra> obrasList;
+    List<ObraDB> obrasList;
 
-    public GalleryFragment() {
+    public ObrasFragment() {
     }
 
     @Override
@@ -43,10 +44,10 @@ public class GalleryFragment extends Fragment {
             // Lista de Obras
             obrasList = new ArrayList<>();
             obrasList = new ArrayList<>();
-            obrasList.add(new Obra("Souto de Moura","Viv. Unifamiliar", "Obra nueva", "https://tinyurl.com/yer7qpnq", 16));
-            obrasList.add(new Obra("Alejandro De La Sota","Viv. Plurifamiliar", "Rehabilitación", "E://TALIARTE//Mapa Radon Canarias_00.JPG", 10));
-            obrasList.add(new Obra("Zaha Hadid","Vivienda Duplex", "Reforma", "https://tinyurl.com/yf8elgmk", 5));
-            obrasList.add(new Obra("Mies Van Der Rohe","Viv. Unifamiliar", "Ampliación", "https://tinyurl.com/yzvfufjk", 8));
+            obrasList.add(new ObraDB("Souto de Moura","Viv. Unifamiliar", "ObraDB nueva", "https://tinyurl.com/yer7qpnq", 16));
+            obrasList.add(new ObraDB("Alejandro De La Sota","Viv. Plurifamiliar", "Rehabilitación", "E://TALIARTE//Mapa Radon Canarias_00.JPG", 10));
+            obrasList.add(new ObraDB("Zaha Hadid","Vivienda Duplex", "Reforma", "https://tinyurl.com/yf8elgmk", 5));
+            obrasList.add(new ObraDB("Mies Van Der Rohe","Viv. Unifamiliar", "Ampliación", "https://tinyurl.com/yzvfufjk", 8));
 
             recyclerView.setAdapter(new MyObraRecyclerViewAdapter(getActivity(), obrasList, mListener));
         }

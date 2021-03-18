@@ -1,4 +1,4 @@
-package com.arq_control.ui.obras;
+package com.arq_control.ui.operadores;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

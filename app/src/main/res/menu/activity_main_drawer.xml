@@ -9,11 +9,11 @@
             android:icon="@drawable/ic_menu_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_visita"
+            android:id="@+id/nav_nueva"
             android:icon="@drawable/ic_menu_build"
-            android:title="@string/menu_visita" />
+            android:title="@string/obra_nueva" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_obras"
             android:icon="@drawable/ic_menu_gallery_bookmark_add"
             android:title="@string/obra_en_curso" />
         <item

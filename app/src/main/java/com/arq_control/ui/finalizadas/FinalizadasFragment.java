@@ -18,8 +18,7 @@ public class FinalizadasFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        finalizadasViewModel =
-                new ViewModelProvider(this).get(FinalizadasViewModel.class);
+        finalizadasViewModel = new ViewModelProvider(this).get(FinalizadasViewModel.class);
         View root = inflater.inflate(R.layout.fragment_finalizadas, container, false);
         final TextView textView = root.findViewById(R.id.text_finalizadas);
 

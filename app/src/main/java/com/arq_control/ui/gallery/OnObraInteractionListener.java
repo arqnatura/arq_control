@@ -1,5 +1,8 @@
 package com.arq_control.ui.gallery;
 
+import com.arq_control.models.ObraDB;
+
 public interface OnObraInteractionListener {
-    public void OnObraClick(Obra obra);
+    public void OnObraClick(ObraDB obraDB);
+
 }

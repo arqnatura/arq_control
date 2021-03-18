@@ -1,4 +1,4 @@
-package com.arq_control.ui.obras;
+package com.arq_control.ui.operadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,20 +12,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.arq_control.R;
-import com.arq_control.ui.gallery.Obra;
+import com.arq_control.models.ObraDB;
 
 import java.util.List;
 
-public class MiAdaptadorObras extends ArrayAdapter<Obra> {
+public class MiAdaptadorObras extends ArrayAdapter<ObraDB> {
     Context ctx;
     int layoutTemplate;
-    List<Obra> obraList;
+    List<ObraDB> obraDBList;
 
-    public MiAdaptadorObras(@NonNull Context context, @LayoutRes int resource, @NonNull List<Obra> objects) {
+    public MiAdaptadorObras(@NonNull Context context, @LayoutRes int resource, @NonNull List<ObraDB> objects) {
         super(context, resource, objects);
         this.ctx = context;
         this.layoutTemplate = resource;
-        this.obraList = objects;
+        this.obraDBList = objects;
     }
 
         @NonNull
@@ -35,7 +35,7 @@ public class MiAdaptadorObras extends ArrayAdapter<Obra> {
             View v = LayoutInflater.from(ctx).inflate(layoutTemplate, parent, false);
 
             // Obtener la información del elemento de la lista que estoy iterando en este momento
-            Obra elementoActual = obraList.get(position);
+            ObraDB elementoActual = obraDBList.get(position);
 
             // Rescatar los elementos de la interfaz de la plantilla
             TextView textViewTitulo = (TextView) v.findViewById(R.id.textViewTitulo);

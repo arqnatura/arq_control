@@ -1,18 +1,30 @@
-package com.arq_control.ui.gallery;
+package com.arq_control.models;
 
-public class Obra {
+import com.arq_control.app.MyApp;
+import java.util.Date;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class ObraDB extends RealmObject {
+
+    @PrimaryKey
+    private int id;
     private String referencia;
     private String promotor;
     private String titulo;
     private String tipoObra;
     private String direccion;
+    private Date fechaInicio;
+    private Date fechaFinal;
     private String almacenFoto;
     private int numeroVisitas;
 
-    public Obra() {
+    public ObraDB() {
+        this.id = MyApp.ObraID.incrementAndGet();
     }
 
-    public Obra(String promotor, String titulo, String tipoObra, String almacenFoto, int numeroVisitas) {
+    public ObraDB(String promotor, String titulo, String tipoObra, String almacenFoto, int numeroVisitas) {
+        this.id = MyApp.ObraID.incrementAndGet();
         this.promotor = promotor;
         this.titulo = titulo;
         this.tipoObra = tipoObra;
@@ -20,15 +32,23 @@ public class Obra {
         this.numeroVisitas = numeroVisitas;
     }
 
-    public Obra(String referencia, String promotor, String titulo, String tipoObra, String direccion, String almacenFoto, int nuemeroVisitas) {
+    public ObraDB(String referencia, String promotor, String titulo, String tipoObra,
+                  String direccion, Date fechaInicio, Date fechaFinal, String almacenFoto, int nuemeroVisitas) {
+        this.id = MyApp.ObraID.incrementAndGet();
         this.referencia = referencia;
         this.promotor = promotor;
         this.titulo = titulo;
         this.tipoObra = tipoObra;
         this.direccion = direccion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinal = fechaFinal;
         this.almacenFoto = almacenFoto;
         this.numeroVisitas = nuemeroVisitas;
     }
+
+    public long getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getReferencia() { return referencia; }
 
@@ -61,6 +81,14 @@ public class Obra {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+    public Date getFechaInicio() { return fechaInicio; }
+
+    public void setFechaInicio(Date fechaInicio) { this.fechaInicio = fechaInicio; }
+
+    public Date getFechaFinal() { return fechaFinal; }
+
+    public void setFechaFinal(Date fechaFinal) { this.fechaFinal = fechaFinal; }
 
     public String getAlmacenFoto() {
         return almacenFoto;
