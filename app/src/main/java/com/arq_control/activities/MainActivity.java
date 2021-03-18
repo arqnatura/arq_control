@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
     ListView lista;
     List<ObraDB> obrasList;
 
-
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -45,13 +44,7 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Códigos de acciónes de los botónes flotantes +
-/*        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabObra);
-        fab.setOnClickListener((view) -> {
-                dialogoNuevaObra = new NuevaObraDialogo();
-                dialogoNuevaObra.show(getSupportFragmentManager(),"NuevaObraDialogo");
-        });
-*/
+        // Código de acción del botón flotante +
         FloatingActionButton fab = findViewById(R.id.fabObra);
         fab.setOnClickListener(new OnClickListener() {
             @Override
@@ -115,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        // Añadir elementos al menú; agrega elementos a la barra de acción si está presente.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -127,20 +120,21 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
                 || super.onSupportNavigateUp();
     }
 
+    // Acciones de los botones principales
     public void initActivityObraNueva(View view){
         Toast.makeText(this, "Crea una nueva obra...", Toast.LENGTH_SHORT).show();
-        Intent miIntent = new Intent(this, VisitaActivity.class);
+        Intent miIntent = new Intent(this, ObrasActivity.class);
         startActivity(miIntent);
     }
     public void initActivityObraCurso(View view){
         Toast.makeText(this, "Ver Listado de Obras en Curso...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, ObrasActivity.class);
+        Intent i = new Intent(this, VisitaActivity.class);
         startActivity(i);
     }
-
-
     public void initActivityArchivo(View view){
         Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, VisitaActivity.class);
+        startActivity(i);
     }
     public void initActivityAgenda(View view){
         Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();

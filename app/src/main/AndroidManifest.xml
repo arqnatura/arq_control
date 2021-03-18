@@ -36,7 +36,7 @@
             android:theme="@style/Theme.Arq_control.NoActionBar" />
         <activity
             android:name=".activities.ObrasActivity"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_obras2"
             android:theme="@style/Theme.Arq_control.NoActionBar" />
         <activity
             android:name=".activities.VisitaActivity"
