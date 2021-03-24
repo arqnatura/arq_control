@@ -78,7 +78,7 @@ public class ObrasActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
 //        int id = item.getItemId();
 //        if (id == R.id.action_regresar) {
-            Toast.makeText(this, "Regresas a la pantalla anterior", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Regresa a la pantalla anterior", Toast.LENGTH_LONG).show();
             onBackPressed();
             return true;
 /*        }
@@ -96,8 +96,14 @@ public class ObrasActivity extends AppCompatActivity
 
     @Override
     public void OnObraEdit(ObraDB mItem) {
-        dialogEditObra = new EditObraDialogFragment();
+        Toast.makeText(this, "Editar esta obra", Toast.LENGTH_SHORT).show();
+/*        dialogEditObra = EditObraDialogFragment.newInstance(mItem.getId(), mItem.getPromotor(),
+                mItem.getDireccion(), mItem.getTelefono(), mItem.getTitulo(), mItem.getTipoObra(),
+                mItem.getReferencia(), mItem.getNumeroVisitas(), mItem.getFechaInicio(),
+                mItem.getFechaFinal(), mItem.getAlmacenFoto());
         dialogEditObra.show(getSupportFragmentManager(),"EditObraDialogo");
+
+ */
     }
 
 
@@ -137,12 +143,12 @@ public class ObrasActivity extends AppCompatActivity
                 ObraDB nuevaObra = new ObraDB();
                 nuevaObra.setId(id);
                 nuevaObra.setPromotor(promotor);
-               nuevaObra.setDireccion(direccion);
+                nuevaObra.setDireccion(direccion);
                 nuevaObra.setTelefono(telefono);
                 nuevaObra.setTitulo(titulo);
                 nuevaObra.setTipoObra(tipoObra);
                 nuevaObra.setReferencia(referencia);
-                nuevaObra.setNumeroVisitas(0);
+                nuevaObra.setNumeroVisitas(visitasPrevistas);
                 nuevaObra.setFechaInicio(fechaInicio);
                 nuevaObra.setFechaFinal(fechaFinal);
 

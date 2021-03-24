@@ -25,8 +25,7 @@
             android:contentDescription="@string/camara"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_camera_24"
-            tools:ignore="MissingConstraints,VectorDrawableCompat" />
+            app:srcCompat="@drawable/ic_baseline_camera_24" />
 
         <TextView
             android:id="@+id/textViewPromotor"
@@ -35,32 +34,32 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:contentDescription="Promotor"
-            android:text="Promotor"
+            android:contentDescription="@string/promotor"
+            android:text="@string/string_promotor"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageViewCamara"
             app:layout_constraintTop_toTopOf="@+id/imageViewCamara" />
 
         <TextView
             android:id="@+id/textViewTitulo"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:contentDescription="Titulo Obra"
-            android:text="Titulo Obra"
+            android:contentDescription="@string/titulo_obra"
+            android:text="@string/titulo_obra"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textViewPromotor"
             app:layout_constraintTop_toTopOf="@+id/textViewPromotor" />
 
         <TextView
             android:id="@+id/textViewTipo"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:contentDescription="Tipo de Obra"
-            android:text="Tipo de Obra"
+            android:contentDescription="@string/tipo_de_obra"
+            android:text="@string/tipo_de_obra"
             app:layout_constraintStart_toEndOf="@+id/textViewReferencia"
             app:layout_constraintTop_toTopOf="@+id/textViewReferencia" />
 
@@ -71,16 +70,17 @@
             app:layout_constraintBottom_toBottomOf="@+id/textViewTipo"
             app:layout_constraintStart_toStartOf="@+id/textViewTitulo"
             app:srcCompat="@drawable/ic_bookmarks_24px"
-            tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat"
+            android:contentDescription="@string/iconovisitas" />
 
         <TextView
             android:id="@+id/textViewVisitas"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:contentDescription="N_Visitas"
-            android:text=" Visitas"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:contentDescription="@string/n_visitas"
+            android:text="@string/n_visitas"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewVisita"
             app:layout_constraintStart_toEndOf="@+id/imageViewVisita"
             app:layout_constraintTop_toTopOf="@+id/imageViewVisita" />
@@ -90,8 +90,8 @@
             android:layout_width="70dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
-            android:contentDescription="Referencia"
-            android:text="Referencia"
+            android:contentDescription="@string/referencia"
+            android:text="@string/referencia"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/textViewPromotor"
             app:layout_constraintTop_toBottomOf="@+id/textViewPromotor" />
@@ -100,10 +100,13 @@
             android:id="@+id/imageViewEditar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.78"
             app:srcCompat="@drawable/ic_baseline_edit_24"
-            tools:ignore="VectorDrawableCompat" />
+            android:contentDescription="@string/botoneditar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

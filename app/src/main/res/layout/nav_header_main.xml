@@ -36,8 +36,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView_mail"
-        app:layout_constraintStart_toEndOf="@+id/imageViewLogoR"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewLogoR" />
 
     <TextView
         android:id="@+id/textView_mail"
@@ -48,7 +47,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewLogoR"
         app:layout_constraintEnd_toEndOf="@+id/textView_name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView_name"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="@+id/textView_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

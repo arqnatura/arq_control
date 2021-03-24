@@ -49,15 +49,21 @@ public class NuevaObraDialogo extends DialogFragment {
 
         builder.setTitle("Nueva Obra")
                 .setPositiveButton("Guardar", (dialog, id) ->  {
-                        Toast.makeText(getActivity(), "Obra guardada", Toast.LENGTH_SHORT).show();
-
                         String promotor = editTextPromotor.getText().toString();
                         String direccion = editTextDireccion.getText().toString();
                         String telefono = editTextPhone.getText().toString();
                         String titulo = editTextTitulo.getText().toString();
                         String tipoObra = editTextTipoObra.getText().toString();
                         String referencia = editTextReferencia.getText().toString();
-                        long visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
+
+                        long visitasPrevistas;
+                        if(!editTextVisitas.getText().toString().isEmpty()){
+                            visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
+                        }else{
+                            visitasPrevistas = 0;
+                        }
+//                            long visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
+
                         String fechaInicio = editTextFechaInicio.getText().toString();
                         String fechaFinal = editTextFechaFinal.getText().toString();
 
@@ -65,11 +71,13 @@ public class NuevaObraDialogo extends DialogFragment {
                                 && !fechaInicio.isEmpty()){
                             mListener.onObraGuardarClickListener(promotor, direccion, telefono,
                             titulo, tipoObra, referencia, visitasPrevistas, fechaInicio, fechaFinal);
+
+                            Toast.makeText(getActivity(), "Obra guardada", Toast.LENGTH_SHORT).show();
                             // Cierra el diálogo
                             dialog.dismiss();
                         } else {
                         Toast.makeText(ctx, "Introduzca los datos mínimos: Promotor, Título," +
-                                " Referencia y Fecha de Inicio.", Toast.LENGTH_SHORT).show();
+                                " Referencia y Fecha de Inicio.", Toast.LENGTH_LONG).show();
                         }
                 })
                 .setNegativeButton("Cancelar", (dialog, id) ->  {
@@ -89,7 +97,7 @@ public class NuevaObraDialogo extends DialogFragment {
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
-                    + " must implement OnNuevaObraListener");
+                    + " must implement OnObraInteractionListener");
         }
     }
 }

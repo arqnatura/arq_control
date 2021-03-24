@@ -67,4 +67,12 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="n_visitas">Nº Visitas</string>
+    <string name="referencia">Referencia</string>
+    <string name="promotor">Promotor</string>
+    <string name="titulo_obra">Titulo Obra</string>
+    <string name="string_promotor">Promotor</string>
+    <string name="tipo_de_obra">Tipo de Obra</string>
+    <string name="iconovisitas">IconoVisitas</string>
+    <string name="botoneditar">BotonEditar</string>
 </resources>

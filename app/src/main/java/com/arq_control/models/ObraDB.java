@@ -20,6 +20,7 @@ public class ObraDB extends RealmObject {
     public static final String OBRADB_VISITAS = "numeroVisitas";
     public static final String OBRADB_FECHAINICIO = "fechaInicio";
     public static final String OBRADB_FECHAFINAL = "fechaFinal";
+    public static final String OBRADB_ALMACENFOTO = "almacenFoto";
 
     @PrimaryKey
     private long id;
@@ -45,7 +46,7 @@ public class ObraDB extends RealmObject {
     }
 
     public ObraDB(String promotor, String direccion, String telefono, String titulo, String tipoObra,
-                   String referencia, int numeroVisitas, String fechaInicio, String fechaFinal,
+                   String referencia, long numeroVisitas, String fechaInicio, String fechaFinal,
                     String almacenFoto) {
 
         this.id = MyApp.ObraID.incrementAndGet();
