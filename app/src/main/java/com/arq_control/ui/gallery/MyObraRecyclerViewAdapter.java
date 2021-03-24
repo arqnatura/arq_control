@@ -3,9 +3,11 @@ package com.arq_control.ui.gallery;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +45,7 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         public final TextView textViewVisitas;
         public final ImageView imageViewCamara;
         public final ImageView imageViewEditar;
+//        public final ImageButton imageViewEditar;
         public final TextView textViewReferencia;
 
         public ObraDB mItem;
@@ -56,6 +59,7 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
             textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
             imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
             imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
+//            imageViewEditar = (ImageButton) view.findViewById(R.id.imageViewEditar);
             textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
         }
 
@@ -78,8 +82,8 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         holder.textViewPromotor.setText(holder.mItem.getPromotor());
         holder.textViewTitulo.setText(holder.mItem.getTitulo());
         holder.textViewTipo.setText(holder.mItem.getTipoObra());
-        holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" Visitas");
-        holder.textViewReferencia.setText("R. " + holder.mItem.getReferencia());
+        holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" Vis.");
+        holder.textViewReferencia.setText("R: " + holder.mItem.getReferencia());
 
         Glide.with(ctx)
                 .load(holder.mItem.getAlmacenFoto())
@@ -92,6 +96,7 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         });
 
         //Definimos el evento de editar la obra
+//        holder.imageViewEditar.setOnClickListener((v) ->  {
         holder.imageViewEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +106,5 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
             }
         });
     }
-
-
 
 }
