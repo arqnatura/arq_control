@@ -11,13 +11,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.arq_control.R;
-import com.arq_control.ui.gallery.OnObraInteractionListener;
 import com.arq_control.models.ObraDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 
+import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -28,10 +28,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnObraInteractionListener {
+import io.realm.Realm;
 
+public class MainActivity extends AppCompatActivity {
+
+    DialogFragment dialogoNuevaObra, dialogEditObra;
     ListView lista;
     List<ObraDB> obrasList;
+    Realm realm;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -54,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
             }
         });
 
+        // Instanciamos el método de Realm getDefaultInstance
+        realm = Realm.getDefaultInstance();
 
         // Código del NavegationDrawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -107,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Añadir elementos al menú; agrega elementos a la barra de acción si está presente.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -118,26 +124,23 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
                 || super.onSupportNavigateUp();
     }
 
+
     // Acciones de los botones principales
     public void initActivityObraNueva(View view){
-        Toast.makeText(this, "Crea una nueva obra...", Toast.LENGTH_SHORT).show();
-        Intent miIntent = new Intent(this, ObrasActivity.class);
-        startActivity(miIntent);
-    }
-    public void initActivityObraCurso(View view){
-        Toast.makeText(this, "Ver Listado de Obras en Curso...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Crea una nueva visita de obra...", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, VisitaActivity.class);
         startActivity(i);
     }
-    public void initActivityArchivo(View view){
-        Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, MainActivity.class);
+    public void initActivityObraCurso(View view){
+        Toast.makeText(this, "Ver Listado de visitas en Curso...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, ObrasActivity.class);
         startActivity(i);
+    }
+    public void initActivityArchivo(View view){
+        Toast.makeText(this, "Ver Listado de visitas Finalizadas...", Toast.LENGTH_SHORT).show();
     }
     public void initActivityAgenda(View view){
         Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
     }
 
     // Boton regresar y cerrar toda la aplicación.
@@ -153,10 +156,83 @@ public class MainActivity extends AppCompatActivity implements OnObraInteraction
         Toast.makeText(this, "Regresa a la anterior pantalla.", Toast.LENGTH_SHORT).show();
     }
 
-
-    @Override
+/*    @Override
     public void OnObraClick(ObraDB obraDB) {
-
     }
 
+    @Override
+    public void OnObraEdit(ObraDB mItem) {
+        dialogEditObra = new EditObraDialogFragment();
+        dialogEditObra.show(getSupportFragmentManager(),"EditObraDialogo");
+    }
+
+    @Override
+    public void onObraGuardarClickListener(String referencia, String promotor, int telefono,
+                      String titulo, String tipoObra, String direccion, Date fechaInicio,
+                      Date fechaFinal, String almacenFoto, int numeroVisitas) {
+
+        realm.executeTransaction(new Realm.Transaction() {
+
+            @Override
+            public void execute(Realm realm) {
+                ObraDB nuevaObra = new ObraDB();
+
+                nuevaObra.setReferencia(referencia);
+                nuevaObra.setPromotor(promotor);
+                nuevaObra.setTelefono(telefono);
+                nuevaObra.setTitulo(titulo);
+                nuevaObra.setTipoObra(tipoObra);
+                nuevaObra.setDireccion(direccion);
+                nuevaObra.setFechaInicio(fechaInicio);
+                nuevaObra.setFechaFinal(fechaFinal);
+                nuevaObra.setNumeroVisitas(0);
+                nuevaObra.setAlmacenFoto(almacenFoto);
+
+                realm.copyToRealm(nuevaObra);
+            }
+        });
+    }
+
+
+    @Override
+    public void onObraGuardarClickListener(String promotor, String titulo, String tipoObra, String referencia) {
+        realm.executeTransaction(new Realm.Transaction() {
+
+            @Override
+            public void execute(Realm realm) {
+                ObraDB nuevaObra = new ObraDB();
+
+                nuevaObra.setReferencia(referencia);
+                nuevaObra.setPromotor(promotor);
+                nuevaObra.setTitulo(titulo);
+                nuevaObra.setTipoObra(tipoObra);
+                nuevaObra.setNumeroVisitas(0);
+
+                realm.copyToRealm(nuevaObra);
+            }
+        });
+    }
+*/
+
+/*    @Override
+    public void onObraActualizarClickListener(int id, String promotor, String titulo, String tipoObra, String referencia) {
+        realm.executeTransaction(new Realm.Transaction() {
+
+            @Override
+            public void execute(Realm realm) {
+                ObraDB nuevaObra = new ObraDB();
+
+                nuevaObra.setId(id);
+                nuevaObra.setReferencia(referencia);
+                nuevaObra.setPromotor(promotor);
+                nuevaObra.setTitulo(titulo);
+                nuevaObra.setTipoObra(tipoObra);
+                nuevaObra.setNumeroVisitas(0);
+
+                realm.copyToRealmOrUpdate(nuevaObra);
+            }
+        });
+    }
+*/
 }
+

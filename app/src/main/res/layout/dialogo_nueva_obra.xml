@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_width="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,7 +12,7 @@
         tools:context=".activities.ObrasActivity">
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/editTextPromotor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -22,13 +22,13 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Promotor:  "
+            android:hint="Promotor:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPostalAddress"
+            android:id="@+id/editTextDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -38,10 +38,11 @@
             android:layout_marginRight="15dp"
             android:ems="10"
             android:inputType="textPostalAddress"
-            android:text="Dirección:  "
+            android:hint="Dirección:"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText1" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextPromotor" />
 
         <EditText
             android:id="@+id/editTextPhone"
@@ -54,13 +55,13 @@
             android:layout_marginRight="15dp"
             android:ems="10"
             android:inputType="phone"
-            android:text="Teléfono:  "
+            android:hint="Teléfono:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextDireccion" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -71,14 +72,14 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Título:  "
+            android:hint="Título:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextTipoObra"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -89,14 +90,14 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Tipo de obra:  "
+            android:hint="Tipo de obra:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTitulo" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editTextReferencia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -107,14 +108,14 @@
             android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Referencia:  "
+            android:hint="Referencia:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTipoObra" />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/editTextVisitas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -124,14 +125,14 @@
             android:layout_marginRight="15dp"
             android:ems="10"
             android:inputType="number"
-            android:text="Visitas previstas:  "
+            android:hint="Visitas previstas:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.388"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextReferencia" />
 
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/editTextFechaInicio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -141,13 +142,13 @@
             android:layout_marginRight="15dp"
             android:ems="10"
             android:inputType="date"
-            android:text="Fecha de Inicio:  "
+            android:hint="Fecha de Inicio:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextVisitas" />
 
         <EditText
-            android:id="@+id/editTextDate2"
+            android:id="@+id/editTextFechaFinal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -157,11 +158,11 @@
             android:layout_marginRight="15dp"
             android:ems="10"
             android:inputType="date"
-            android:text="Fecha Final:  "
+            android:hint="Fecha Final:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextFechaInicio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

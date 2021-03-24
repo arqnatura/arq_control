@@ -8,14 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import com.arq_control.R;
-import com.arq_control.ui.Obras.NuevaObraDialogo;
-import com.arq_control.ui.finalizadas.FinalizadasFragment;
-import com.arq_control.ui.gallery.ObrasFragment;
-import com.arq_control.ui.operadores.OperadoresFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -38,7 +33,7 @@ public class HomeFragment extends Fragment {
  /*   public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonPlus:
-                cargarFragment(new ObrasFragment());
+                cargarFragment(new ListadoObrasFragment());
                 break;
             case R.id.buttonCurso:
                 cargarFragment(new FinalizadasFragment());

@@ -18,16 +18,21 @@ import com.arq_control.models.ObraDB;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ObrasFragment extends Fragment {
-    OnObraInteractionListener mListener;
-    List<ObraDB> obrasList;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
-    public ObrasFragment() {
+public class ListadoObrasFragment extends Fragment {
+    OnObraInteractionListener mListener;
+    RealmResults<ObraDB> obrasDBList;
+    Realm realm;
+
+    public ListadoObrasFragment() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -41,15 +46,16 @@ public class ObrasFragment extends Fragment {
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-            // Lista de Obras
-            obrasList = new ArrayList<>();
-            obrasList = new ArrayList<>();
-            obrasList.add(new ObraDB("Souto de Moura","Viv. Unifamiliar", "ObraDB nueva", "https://tinyurl.com/yer7qpnq", 16, "VIV_03"));
-            obrasList.add(new ObraDB("Alejandro De La Sota","Viv. Plurifamiliar", "Rehabilitación", "E:\\TALIARTE\\Mapa Radon Canarias_00.JPG", 10, "VIV_05"));
+            // Hacemos la consulta a la DB y obtenemos todos los registros.
+            obrasDBList = realm.where(ObraDB.class).findAll();
+
+/*            obrasList = new ArrayList<>();
+            obrasList.add(new ObraDB("Souto de Moura","Viv. Unifamiliar", "Obra nueva", "https://tinyurl.com/yer7qpnq", 16, "VIV_03"));
+            obrasList.add(new ObraDB("Alejandro De La Sota","Viv. Plurifamiliar", "Rehabilitación Integral", "", 10, "VIV_05"));
             obrasList.add(new ObraDB("Zaha Hadid","Vivienda Duplex", "Reforma", "https://tinyurl.com/yf8elgmk", 5, "VIV_18"));
             obrasList.add(new ObraDB("Mies Van Der Rohe","Viv. Unifamiliar", "Ampliación", "https://tinyurl.com/yzvfufjk", 8, "VIV_25"));
-
-            recyclerView.setAdapter(new MyObraRecyclerViewAdapter(getActivity(), obrasList, mListener));
+*/
+            recyclerView.setAdapter(new MyObraRecyclerViewAdapter(getActivity(), obrasDBList, mListener));
         }
         return view;
     }

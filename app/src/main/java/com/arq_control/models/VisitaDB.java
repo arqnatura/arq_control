@@ -9,13 +9,13 @@ import io.realm.annotations.PrimaryKey;
 
 public class VisitaDB extends RealmObject {
     @PrimaryKey
-    private int id;
+    private long id;
     private String referencia;
     private String titulo;
     private Date fecha;
     private String almacenFoto;
     private String descripcion;
-    private int numeroVisita;
+    private long numeroVisita;
 
     public VisitaDB() {
         this.id = MyApp.VisitaID.incrementAndGet();
@@ -31,9 +31,9 @@ public class VisitaDB extends RealmObject {
         this.numeroVisita = numeroVisita;
     }
 
-    public int getId() { return id; }
+    public long getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(long id) { this.id = id; }
 
     public String getReferencia() { return referencia; }
 
@@ -55,7 +55,7 @@ public class VisitaDB extends RealmObject {
 
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public int getNumeroVisita() { return numeroVisita; }
+    public long getNumeroVisita() { return numeroVisita; }
 
-    public void setNumeroVisita(int numeroVisita) { this.numeroVisita = numeroVisita; }
+    public void setNumeroVisita(long numeroVisita) { this.numeroVisita = numeroVisita; }
 }

@@ -68,7 +68,6 @@ public class LoginActivity extends AppCompatActivity {
     public void initMainActivity(View view){
         Intent intentMainActivity = new Intent ( this, MainActivity.class);
         startActivity(intentMainActivity);
-
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

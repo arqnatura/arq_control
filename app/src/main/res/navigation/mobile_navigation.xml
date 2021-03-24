@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/nav_nueva"
-        android:name="com.arq_control.ui.finalizadas.FinalizadasFragment"
+        android:name="com.arq_control.ui.home.HomeFragment"
         android:label="@string/obra_nueva"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_obras"
-        android:name="com.arq_control.ui.gallery.ObrasFragment"
+        android:name="com.arq_control.ui.gallery.ListadoObrasFragment"
         android:label="@string/menu_obras"
         tools:layout="@layout/fragment_gallery" />
 

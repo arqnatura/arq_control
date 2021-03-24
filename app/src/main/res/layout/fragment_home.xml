@@ -15,7 +15,7 @@
         android:layout_height="149dp"
         android:background="@android:color/transparent"
         android:drawableTop="@mipmap/arq_plus_36dp"
-        android:text="@string/obra_nueva"
+        android:text="@string/visita_nueva"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/buttonArchivo"
         app:layout_constraintEnd_toStartOf="@+id/buttonCurso"

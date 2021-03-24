@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,37 +11,19 @@
         android:id="@+id/textViewExit"
         android:layout_width="280dp"
         android:layout_height="88dp"
-        android:layout_marginTop="124dp"
         android:contentDescription="@string/salir"
         android:gravity="center_horizontal"
         android:singleLine="false"
         android:text="@string/Cuestion_Salir"
         android:textColor="@color/white"
-        android:textSize="26dp"
+        android:textSize="26sp"
         android:textStyle="bold"
         android:verticalScrollbarPosition="defaultPosition"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegresar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonSalir"
-        android:layout_width="155dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="30dp"
-        android:background="@android:color/transparent"
-        android:clickable="true"
-        android:drawableTop="@mipmap/arq_salir_36dp"
-        android:focusable="true"
-        android:onClick="initActivitySalir"
-        android:text="@string/BotonSalir"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/buttonRegresar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewExit" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonRegresar"
@@ -58,5 +41,23 @@
         app:layout_constraintStart_toEndOf="@+id/buttonSalir"
         app:layout_constraintTop_toTopOf="@+id/buttonSalir"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/buttonSalir"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:drawableTop="@mipmap/arq_salir_36dp"
+        android:focusable="true"
+        android:onClick="initActivitySalir"
+        android:text="@string/BotonSalir"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonRegresar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewExit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
