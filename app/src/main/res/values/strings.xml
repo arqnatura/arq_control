@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_home">Principal</string>
-    <string name="menu_gallery">Listado Obras</string>
+    <string name="menu_gallery">Listado de Obras</string>
     <string name="menu_obras_finales">Obras Finalizadas</string>
     <string name="menu_operadores">Listado Operadores</string>
     <string name="menu_visita">Nueva Visita Obra</string>
@@ -35,13 +35,12 @@
     <string name="obra_en_curso">Obras en Curso</string>
     <string name="en_curso">En Curso</string>
     <string name="obra_nueva">Obra Nueva</string>
-    <string name="visita_nueva">Visita Nueva</string>
+    <string name="visita_nueva">Nueva Visita</string>
     <string name="obras_finalizadas">Obras Finalizadas</string>
     <string name="operadores">Agenda</string>
     <string name="finalizadas">Finalizadas</string>
     <string name="agenda_operadores">Agenda Operadores</string>
-    <string name="Politica">Política de privacidad</string>
-    <string name="manual_de_uso">Manual de Uso</string>
+
     <string name="compartir">Compartir</string>
     <string name="salir">SALIR</string>
 
@@ -75,4 +74,12 @@
     <string name="tipo_de_obra">Tipo de Obra</string>
     <string name="iconovisitas">IconoVisitas</string>
     <string name="botoneditar">BotonEditar</string>
+
+    <string name="menu_politica">Politica de Privacidad</string>
+    <string name="Politica">Política de privacidad</string>
+    <string name="manual_de_uso">Manual de Uso</string>
+    <string name="menu_manual_uso">Manual de Uso</string>
+    <string name="title_activity_informa_obra">ScrollingActivity</string>
+    <string name="informe_Obra">Informe de Obra</string>
+
 </resources>

@@ -25,7 +25,7 @@ import java.util.List;
 
 import io.realm.Realm;
 
-public class ObrasActivity extends AppCompatActivity
+public class ObrasActivity00 extends AppCompatActivity
         implements OnObraInteractionListener, OnNuevaObraListener {
 
     DialogFragment dialogoNuevaObra, dialogEditObra;

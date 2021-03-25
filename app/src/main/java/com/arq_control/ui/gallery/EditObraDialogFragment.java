@@ -3,39 +3,31 @@ package com.arq_control.ui.gallery;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+
 import com.arq_control.R;
 import com.arq_control.models.ObraDB;
 
 public class EditObraDialogFragment extends DialogFragment {
 
+    AlertDialog.Builder builder;
+    OnNuevaObraListener mListener;
+    View v;
+
     private long idObra, visitas;
     private String promotor, direccion, telefono, titulo, tipoObra,
-            referencia, fechaInicio, fechaFinal, almacenFoto;
-    AlertDialog.Builder builder;
-    OnObraInteractionListener mListener;
-    View v;
-    EditText editTextPromotor;
-    EditText editTextDireccion;
-    EditText editTextPhone;
-    EditText editTextTitulo;
-    EditText editTextTipoObra;
-    EditText editTextReferencia;
-    EditText editTextVisitas;
-    EditText editTextFechaInicio;
-    EditText editTextFechaFinal;
+            referencia, fechaInicio, fechaFinal, AlmacenFoto;
+    EditText editTextPromotor, editTextDireccion, editTextPhone, editTextTitulo, editTextTipoObra,
+                editTextReferencia, editTextVisitas, editTextFechaInicio, editTextFechaFinal;
     ImageView editTextAlmacenFoto;
     Context ctx;
 
@@ -77,7 +69,7 @@ public class EditObraDialogFragment extends DialogFragment {
             visitas = getArguments().getLong(ObraDB.OBRADB_VISITAS);
             fechaInicio = getArguments().getString(ObraDB.OBRADB_FECHAINICIO);
             fechaFinal = getArguments().getString(ObraDB.OBRADB_FECHAFINAL);
-            almacenFoto = getArguments().getString(ObraDB.OBRADB_ALMACENFOTO);
+//            almacenFoto = getArguments().getString(ObraDB.OBRADB_ALMACENFOTO);
         }
     }
 
@@ -88,6 +80,7 @@ public class EditObraDialogFragment extends DialogFragment {
 
         ctx = getActivity();
 
+        // Get the layout inflater
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         v =inflater.inflate(R.layout.dialogo_nueva_obra, null);
@@ -100,8 +93,10 @@ public class EditObraDialogFragment extends DialogFragment {
         editTextVisitas = (EditText)  v.findViewById(R.id.editTextVisitas);
         editTextFechaInicio = (EditText)  v.findViewById(R.id.editTextFechaInicio);
         editTextFechaFinal = (EditText)  v.findViewById(R.id.editTextFechaFinal);
-        editTextAlmacenFoto = (ImageView)  v.findViewById(R.id.imageViewCamara);
+//        editTextAlmacenFoto = (ImageView)  v.findViewById(R.id.imageViewCamara);
 
+
+        // Precargamos el formulario
         editTextPromotor.setText(promotor);
         editTextDireccion.setText(direccion);
         editTextPhone.setText(telefono);
@@ -111,29 +106,35 @@ public class EditObraDialogFragment extends DialogFragment {
         editTextVisitas.setText((int) visitas);
         editTextFechaInicio.setText(fechaInicio);
         editTextFechaFinal.setText(fechaFinal);
-        editTextAlmacenFoto.setImageDrawable(Drawable.createFromPath(almacenFoto));
+//        editTextAlmacenFoto.setImageDrawable(Drawable.createFromPath(almacenFoto));
 
         builder.setView(v);
 
         builder.setTitle("Editar Obra")
                 .setPositiveButton("Guardar", (dialog, id) ->  {
-                    Toast.makeText(getActivity(), "Obra guardada", Toast.LENGTH_SHORT).show();
-
                     String promotor = editTextPromotor.getText().toString();
                     String direccion = editTextDireccion.getText().toString();
                     String telefono = editTextPhone.getText().toString();
                     String titulo = editTextTitulo.getText().toString();
                     String tipoObra = editTextTipoObra.getText().toString();
                     String referencia = editTextReferencia.getText().toString();
-                    long visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
-                    //Long visitasPrevistas = Long.parseLong(editTextVisitas.toString());
+                    //long visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
+                    long visitasPrevistas;
+                    if(!editTextVisitas.getText().toString().isEmpty()){
+                        visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
+                    }else{
+                        visitasPrevistas = 0;
+                    }
                     String fechaInicio = editTextFechaInicio.getText().toString();
                     String fechaFinal = editTextFechaFinal.getText().toString();
 
                     if(!promotor.isEmpty() && !titulo.isEmpty() && !referencia.isEmpty()
                             && !fechaInicio.isEmpty()){
-                        mListener.onObraActualizarClickListener(idObra, promotor, direccion, telefono,
-                                titulo, tipoObra, referencia, visitasPrevistas, fechaInicio, fechaFinal);
+                        mListener.onObraActualizarClickListener(idObra, promotor, direccion,
+                                telefono, titulo, tipoObra, referencia, visitasPrevistas,
+                                fechaInicio, fechaFinal);
+
+                        Toast.makeText(getActivity(), "Obra editada", Toast.LENGTH_SHORT).show();
                         // Cierra el diálogo
                         dialog.dismiss();
                     } else {
@@ -154,11 +155,11 @@ public class EditObraDialogFragment extends DialogFragment {
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            mListener = (OnObraInteractionListener) activity;
+            mListener = (OnNuevaObraListener) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
-                    + " must implement OnObraActualizar");
+                    + " must implement OnObraInteractionListener");
         }
     }
 }

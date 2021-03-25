@@ -29,7 +29,7 @@ import java.util.List;
 
 import io.realm.Realm;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity00 extends AppCompatActivity {
 
     DialogFragment dialogoNuevaObra, dialogEditObra;
     ListView lista;
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Nueva Obra", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent miIntent = new Intent(MainActivity.this, ObrasActivity.class);
+                Intent miIntent = new Intent(MainActivity00.this, ObrasActivity.class);
                 startActivity(miIntent);
             }
         });

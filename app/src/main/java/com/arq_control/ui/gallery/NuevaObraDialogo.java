@@ -10,17 +10,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 import com.arq_control.R;
-import com.arq_control.ui.gallery.OnObraInteractionListener;
 
 public class NuevaObraDialogo extends DialogFragment {
 
     AlertDialog.Builder builder;
-    OnObraInteractionListener mListener;
+    OnNuevaObraListener mListener;
     View v;
     EditText editTextPromotor, editTextDireccion,  editTextPhone, editTextTitulo, editTextTipoObra,
             editTextReferencia, editTextVisitas, editTextFechaInicio, editTextFechaFinal;
@@ -55,7 +53,7 @@ public class NuevaObraDialogo extends DialogFragment {
                         String titulo = editTextTitulo.getText().toString();
                         String tipoObra = editTextTipoObra.getText().toString();
                         String referencia = editTextReferencia.getText().toString();
-
+                        // Evitamos que el campo Visitas Previstas quede vacío.
                         long visitasPrevistas;
                         if(!editTextVisitas.getText().toString().isEmpty()){
                             visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
@@ -93,7 +91,7 @@ public class NuevaObraDialogo extends DialogFragment {
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the NoticeDialogListener so we can send events to the host
-            mListener = (OnObraInteractionListener) activity;
+            mListener = (OnNuevaObraListener) activity;
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()

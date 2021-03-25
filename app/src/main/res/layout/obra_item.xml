@@ -8,14 +8,14 @@
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginTop="14dp"
-    app:cardElevation="6dp" >
+    app:cardElevation="4dp" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="4dp">
 
-        <ImageView
+<!--        <ImageView
             android:id="@+id/imageViewCamara"
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -26,19 +26,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_camera_24" />
+-->
 
         <TextView
             android:id="@+id/textViewPromotor"
             android:layout_width="165dp"
             android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
             android:contentDescription="@string/promotor"
             android:text="@string/string_promotor"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imageViewCamara"
-            app:layout_constraintTop_toTopOf="@+id/imageViewCamara" />
+            app:layout_constraintStart_toEndOf="@+id/imageViewEditar"
+            app:layout_constraintTop_toTopOf="@+id/imageViewEditar" />
 
         <TextView
             android:id="@+id/textViewTitulo"
@@ -87,7 +87,7 @@
 
         <TextView
             android:id="@+id/textViewReferencia"
-            android:layout_width="70dp"
+            android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/referencia"
@@ -98,15 +98,18 @@
 
         <ImageView
             android:id="@+id/imageViewEditar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
 
+            android:contentDescription="@string/botoneditar"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.78"
-            app:srcCompat="@drawable/ic_baseline_edit_24"
-            android:contentDescription="@string/botoneditar" />
+            app:layout_constraintVertical_bias="0.487"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

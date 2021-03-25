@@ -5,10 +5,10 @@
     tools:context="com.arq_control.activities.ObrasActivity">
 
     <item
-    android:id="@+id/action_regresar"
-    android:icon="@drawable/ic_baseline_arrow_back_24"
-    android:orderInCategory="100"
-    android:title="Regresar"
-    app:showAsAction="always"/>
+        android:id="@+id/action_regresar"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:orderInCategory="100"
+        android:title="@string/BotonRegresar"
+        app:showAsAction="always" />
 
 </menu>

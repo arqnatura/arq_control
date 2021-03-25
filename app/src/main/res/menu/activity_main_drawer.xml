@@ -9,10 +9,6 @@
             android:icon="@drawable/ic_menu_home_24"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_nueva"
-            android:icon="@drawable/ic_menu_build"
-            android:title="@string/obra_nueva" />
-        <item
             android:id="@+id/nav_obras"
             android:icon="@drawable/ic_menu_gallery_bookmark_add"
             android:title="@string/obra_en_curso" />
@@ -31,7 +27,7 @@
                 android:icon="@drawable/ic_menu_layers_24"
                 android:title="@string/Politica" />
             <item
-                android:id="@+id/nav_ayuda"
+                android:id="@+id/nav_manual_uso"
                 android:icon="@drawable/ic_menu_bookmark_24"
                 android:title="@string/manual_de_uso" />
             <item

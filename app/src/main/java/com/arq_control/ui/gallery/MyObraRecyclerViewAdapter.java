@@ -1,36 +1,53 @@
 package com.arq_control.ui.gallery;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.arq_control.R;
 import com.arq_control.models.ObraDB;
-import com.bumptech.glide.Glide;
 
-import java.util.List;
-
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmChangeListener;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 
 public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecyclerViewAdapter.ViewHolder> {
 
     private final RealmResults<ObraDB> mValues;
-    private OnObraInteractionListener mListener;
+    private final OnObraInteractionListener mListener;
     private Context ctx;
+    private RealmChangeListener listenerRefresco;
 
     public MyObraRecyclerViewAdapter(Context context, RealmResults<ObraDB> items,
                                      OnObraInteractionListener listener) {
         ctx = context;
         mValues = items;
         mListener = listener;
+        this.listenerRefresco = (RealmChangeListener) (results) -> {
+                notifyDataSetChanged();
+        };
+        if (items != null) {
+            addListener(items);
+        }
+    }
+
+    private void addListener(OrderedRealmCollection<ObraDB> items) {
+        if (items instanceof RealmResults){
+            RealmResults realmResults = (RealmResults) items;
+            realmResults.addChangeListener(listenerRefresco);
+        }else if (items instanceof RealmList){
+            RealmList<ObraDB> list = (RealmList<ObraDB>) items;
+            list.addChangeListener((RealmChangeListener) listenerRefresco);
+        }else {
+            throw new IllegalArgumentException("RealmCollection not supported: " + items.getClass());
+        }
     }
 
     @Override
@@ -43,9 +60,8 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         public final TextView textViewTitulo;
         public final TextView textViewTipo;
         public final TextView textViewVisitas;
-        public final ImageView imageViewCamara;
+//        public final ImageView imageViewCamara;
         public final ImageView imageViewEditar;
-//        public final ImageButton imageViewEditar;
         public final TextView textViewReferencia;
 
         public ObraDB mItem;
@@ -57,9 +73,8 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
             textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
             textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
             textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
-            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
+//            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
             imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
-//            imageViewEditar = (ImageButton) view.findViewById(R.id.imageViewEditar);
             textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
         }
 
@@ -85,16 +100,19 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
         holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" Vis.");
         holder.textViewReferencia.setText("R: " + holder.mItem.getReferencia());
 
-        Glide.with(ctx)
+/*        Glide.with(ctx)
                 .load(holder.mItem.getAlmacenFoto())
                 .into(holder.imageViewCamara);
-
+*/
         holder.mView.setOnClickListener((v) -> {
             if (null != mListener){
                 mListener.OnObraClick(holder.mItem);
             }
         });
 
+/*        holder.imageViewEditar.setOnClickListener((v) ->  {
+                mListener.OnObraEdit(holder.mItem);
+        });
         //Definimos el evento de editar la obra
 //        holder.imageViewEditar.setOnClickListener((v) ->  {
         holder.imageViewEditar.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +123,19 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
                 }
             }
         });
+*/
+        holder.imageViewEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (null != mListener) {
+                    // Notifique a la interfaz la devolucion de la llamada que se ha
+                    // seleccionado un elemento (si el fragment está adjunto a un activity) .
+                    mListener.OnObraEdit(holder.mItem);
+                }
+            }
+        });
+
+
     }
 
 }
