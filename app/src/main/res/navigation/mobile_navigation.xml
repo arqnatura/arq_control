@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_obras"
-        android:name="com.arq_control.ui.gallery.ListadoObrasFragment"
+        android:name="com.arq_control.ui.gallery.ObraFragment"
         android:label="@string/menu_obras"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_obra" />
 
     <fragment
         android:id="@+id/nav_finalizadas"
@@ -30,12 +30,6 @@
         tools:layout="@layout/fragment_operadores" />
 
     <fragment
-        android:id="@+id/nav_salir"
-        android:name="com.arq_control.ui.salir.SalirFragment"
-        android:label="@string/menu_salir"
-        tools:layout="@layout/fragment_salir" />
-
-    <fragment
         android:id="@+id/nav_politica"
         android:name="com.arq_control.ui.varios.PoliticsFragment"
         android:label="@string/menu_politica"
@@ -46,5 +40,10 @@
         android:name="com.arq_control.ui.varios.ManualUsoFragment"
         android:label="@string/menu_manual_uso"
         tools:layout="@layout/fragment_manual_uso" />
+    <fragment
+        android:id="@+id/nav_salir"
+        android:name="com.arq_control.ui.salir.SalirFragment"
+        android:label="@string/menu_salir"
+        tools:layout="@layout/fragment_salir" />
 
 </navigation>

@@ -2,8 +2,6 @@ package com.arq_control.models;
 
 import com.arq_control.app.MyApp;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -17,10 +15,9 @@ public class ObraDB extends RealmObject {
     public static final String OBRADB_TITULO = "titulo";
     public static final String OBRADB_TIPOOBRA = "tipoObra";
     public static final String OBRADB_REFERENCIA = "referencia";
-    public static final String OBRADB_VISITAS = "numeroVisitas";
     public static final String OBRADB_FECHAINICIO = "fechaInicio";
     public static final String OBRADB_FECHAFINAL = "fechaFinal";
-    public static final String OBRADB_ALMACENFOTO = "almacenFoto";
+
 
     @PrimaryKey
     private long id;
@@ -33,21 +30,17 @@ public class ObraDB extends RealmObject {
     private String tipoObra;
     @Required
     private String referencia;
-    private long numeroVisitas;
     @Required
     private String fechaInicio;
     private String fechaFinal;
-    private String almacenFoto;
-
 
 
     public ObraDB() {
         this.id = MyApp.ObraID.incrementAndGet();
     }
 
-    public ObraDB(String promotor, String direccion, String telefono, String titulo, String tipoObra,
-                   String referencia, long numeroVisitas, String fechaInicio, String fechaFinal,
-                    String almacenFoto) {
+    public ObraDB(String promotor, String direccion, String telefono, String titulo,
+                  String tipoObra, String referencia, String fechaInicio, String fechaFinal) {
 
         this.id = MyApp.ObraID.incrementAndGet();
         this.promotor = promotor;
@@ -56,10 +49,8 @@ public class ObraDB extends RealmObject {
         this.titulo = titulo;
         this.tipoObra = tipoObra;
         this.referencia = referencia;
-        this.numeroVisitas = numeroVisitas;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
-        this.almacenFoto = almacenFoto;
     }
 
     // Estandar getters y setters generados por IDE.
@@ -99,11 +90,4 @@ public class ObraDB extends RealmObject {
 
     public void setFechaFinal(String fechaFinal) { this.fechaFinal = fechaFinal; }
 
-    public long getNumeroVisitas() { return numeroVisitas; }
-
-    public void setNumeroVisitas(long numeroVisitas) { this.numeroVisitas = numeroVisitas; }
-
-    public String getAlmacenFoto() { return almacenFoto; }
-
-    public void setAlmacenFoto(String almacenFoto) { this.almacenFoto = almacenFoto; }
 }

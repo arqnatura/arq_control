@@ -3,17 +3,19 @@ package com.arq_control.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import com.arq_control.R;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.provider.MediaStore;
-import android.view.View;
-import android.widget.ImageView;
+import com.arq_control.R;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class VisitaActivity extends AppCompatActivity {
 
@@ -24,9 +26,11 @@ public class VisitaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visita);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+
+        CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_visita);
         toolBarLayout.setTitle(getTitle());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabFoto);
@@ -52,5 +56,15 @@ public class VisitaActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_obra, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Toast.makeText(this, "Regresa a la pantalla anterior", Toast.LENGTH_SHORT).show();
+        onBackPressed();
+        return true;
+    }
 }

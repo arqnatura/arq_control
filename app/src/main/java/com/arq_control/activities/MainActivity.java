@@ -6,35 +6,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.arq_control.R;
-import com.arq_control.models.ObraDB;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.List;
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
 
-import io.realm.Realm;
-
-public class MainActivity extends AppCompatActivity {
-
-    DialogFragment dialogoNuevaObra, dialogEditObra;
-    ListView lista;
-    List<ObraDB> obrasList;
-    Realm realm;
+//    Realm realm;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -46,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Código de acción del botón flotante +
-        FloatingActionButton fab = findViewById(R.id.fabObra);
-        fab.setOnClickListener(new OnClickListener() {
+       FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Nueva Obra", Snackbar.LENGTH_LONG)
@@ -57,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Instanciamos el método de Realm getDefaultInstance
+/*         // Instanciamos el método de Realm getDefaultInstance
         realm = Realm.getDefaultInstance();
-
+*/
         // Código del NavegationDrawer
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -74,10 +65,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-
      }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -170,6 +158,11 @@ public class MainActivity extends AppCompatActivity {
     public void initActivityRegresar(View view){
         onBackPressed();
         Toast.makeText(this, "Regresa a la anterior pantalla.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
 }
 

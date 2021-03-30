@@ -1,12 +1,13 @@
 package com.arq_control.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
@@ -21,18 +22,14 @@ import com.arq_control.ui.gallery.OnObraInteractionListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.List;
-
 import io.realm.Realm;
 
 public class ObrasActivity extends AppCompatActivity
         implements OnObraInteractionListener, OnNuevaObraListener {
 
     DialogFragment dialogoNuevaObra, dialogEditObra;
-    ListView lista;
-    List<ObraDB> obrasList;
     Realm realm;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +37,14 @@ public class ObrasActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbarObras);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2.setOnClickListener((view) -> {
             dialogoNuevaObra = new NuevaObraDialogo();
             dialogoNuevaObra.show(getSupportFragmentManager(),"DialogoNuevaObra");
             Snackbar.make(view, "Diálogo nueva obra.", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
         });
+
 
  /*      FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
          fab.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +63,7 @@ public class ObrasActivity extends AppCompatActivity
         // Rescatamos el contenedor y le cargamos un fragmento
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.container, new ListadoObrasFragment())
+                .add(R.id.containerObras, new ListadoObrasFragment())
                 .commit();
     }
 
@@ -74,11 +72,12 @@ public class ObrasActivity extends AppCompatActivity
         getMenuInflater().inflate(R.menu.menu_obra, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 //        int id = item.getItemId();
 //        if (id == R.id.action_regresar) {
-            Toast.makeText(this, "Regresa a la pantalla anterior", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Regresa a la pantalla anterior", Toast.LENGTH_SHORT).show();
             onBackPressed();
             return true;
 /*        }
@@ -99,21 +98,17 @@ public class ObrasActivity extends AppCompatActivity
     @Override
     public void OnObraEdit(ObraDB mItem) {
         Toast.makeText(this, "Editar esta obra", Toast.LENGTH_SHORT).show();
-//        dialogEditObra = new EditObraDialogFragment ();
         dialogEditObra = EditObraDialogFragment.newInstance(mItem.getId(), mItem.getPromotor(),
                 mItem.getDireccion(), mItem.getTelefono(), mItem.getTitulo(), mItem.getTipoObra(),
-                mItem.getReferencia(), mItem.getNumeroVisitas(), mItem.getFechaInicio(),
-                mItem.getFechaFinal(), mItem.getAlmacenFoto());
+                mItem.getReferencia(), mItem.getFechaInicio(), mItem.getFechaFinal());
         dialogEditObra.show(getSupportFragmentManager(),"EditObraDialogo");
-
     }
 
 
     @Override
     public void onObraGuardarClickListener(String promotor, String direccion, String telefono,
                                            String titulo, String tipoObra, String referencia,
-                                           long visitasPrevistas, String fechaInicio,
-                                           String fechaFinal) {
+                                           String fechaInicio, String fechaFinal) {
 
         realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -125,7 +120,6 @@ public class ObrasActivity extends AppCompatActivity
                 nuevaObra.setTitulo(titulo);
                 nuevaObra.setTipoObra(tipoObra);
                 nuevaObra.setReferencia(referencia);
-                nuevaObra.setNumeroVisitas(visitasPrevistas);
                 nuevaObra.setFechaInicio(fechaInicio);
                 nuevaObra.setFechaFinal(fechaFinal);
 
@@ -137,9 +131,10 @@ public class ObrasActivity extends AppCompatActivity
     @Override
     public void onObraActualizarClickListener(long id, String promotor, String direccion,
                                               String telefono, String titulo, String tipoObra,
-                                              String referencia, long visitasPrevistas,
-                                              String fechaInicio, String fechaFinal) {
-        realm.executeTransaction(new Realm.Transaction() {
+                                              String referencia, String fechaInicio,
+                                              String fechaFinal) {
+
+        realm.executeTransactionAsync(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 ObraDB nuevaObra = new ObraDB();
@@ -150,7 +145,6 @@ public class ObrasActivity extends AppCompatActivity
                 nuevaObra.setTitulo(titulo);
                 nuevaObra.setTipoObra(tipoObra);
                 nuevaObra.setReferencia(referencia);
-                nuevaObra.setNumeroVisitas(visitasPrevistas);
                 nuevaObra.setFechaInicio(fechaInicio);
                 nuevaObra.setFechaFinal(fechaFinal);
 
@@ -158,5 +152,42 @@ public class ObrasActivity extends AppCompatActivity
             }
         });
     }
+
+    @Override
+    public void OnObraEliminar(ObraDB mItem) { mostrarDialogoConfirmacion(mItem); }
+
+    private void mostrarDialogoConfirmacion(final ObraDB obraDB) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Añadimos titulo y mensaje de diálogo con el usuario
+        builder.setTitle("Eliminar Obra");
+        builder.setMessage("¿Desea eliminar definitivamente la Obra del promotor "
+                + obraDB.getPromotor()+" ?");
+        // Add the buttons
+        builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                realm.executeTransactionAsync(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        long idObraEliminar = obraDB.getId();
+                        ObraDB obraEliminar = realm.where(ObraDB.class).equalTo(ObraDB.OBRADB_ID,
+                              idObraEliminar).findFirst();
+                        obraEliminar.deleteFromRealm();
+                    }
+                });
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }
 

@@ -3,11 +3,11 @@ package com.arq_control.ui.gallery;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,12 +23,11 @@ public class EditObraDialogFragment extends DialogFragment {
     OnNuevaObraListener mListener;
     View v;
 
-    private long idObra, visitas;
+    private long idObra;
     private String promotor, direccion, telefono, titulo, tipoObra,
-            referencia, fechaInicio, fechaFinal, AlmacenFoto;
+            referencia, fechaInicio, fechaFinal;
     EditText editTextPromotor, editTextDireccion, editTextPhone, editTextTitulo, editTextTipoObra,
-                editTextReferencia, editTextVisitas, editTextFechaInicio, editTextFechaFinal;
-    ImageView editTextAlmacenFoto;
+                editTextReferencia, editTextFechaInicio, editTextFechaFinal;
     Context ctx;
 
     public EditObraDialogFragment() {
@@ -36,8 +35,8 @@ public class EditObraDialogFragment extends DialogFragment {
     }
 
     public static EditObraDialogFragment newInstance(long id, String p, String d, String te,
-                                                     String ti, String to, String r, long v,
-                                                     String fi, String ff, String af) {
+                                                     String ti, String to, String r,
+                                                     String fi, String ff) {
         EditObraDialogFragment fragment = new EditObraDialogFragment();
         Bundle args = new Bundle();
         args.putLong(ObraDB.OBRADB_ID, id);
@@ -47,11 +46,11 @@ public class EditObraDialogFragment extends DialogFragment {
         args.putString(ObraDB.OBRADB_TITULO, ti);
         args.putString(ObraDB.OBRADB_TIPOOBRA, to);
         args.putString(ObraDB.OBRADB_REFERENCIA, r);
-        args.putLong(ObraDB.OBRADB_VISITAS, v);
         args.putString(ObraDB.OBRADB_FECHAINICIO, fi);
         args.putString(ObraDB.OBRADB_FECHAFINAL, ff);
-        args.putString(ObraDB.OBRADB_ALMACENFOTO, af);
+
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -66,10 +65,8 @@ public class EditObraDialogFragment extends DialogFragment {
             titulo = getArguments().getString(ObraDB.OBRADB_TITULO);
             tipoObra = getArguments().getString(ObraDB.OBRADB_TIPOOBRA);
             referencia = getArguments().getString(ObraDB.OBRADB_REFERENCIA);
-            visitas = getArguments().getLong(ObraDB.OBRADB_VISITAS);
             fechaInicio = getArguments().getString(ObraDB.OBRADB_FECHAINICIO);
             fechaFinal = getArguments().getString(ObraDB.OBRADB_FECHAFINAL);
-//            almacenFoto = getArguments().getString(ObraDB.OBRADB_ALMACENFOTO);
         }
     }
 
@@ -90,11 +87,8 @@ public class EditObraDialogFragment extends DialogFragment {
         editTextTitulo = (EditText)  v.findViewById(R.id.editTextTitulo);
         editTextTipoObra = (EditText)  v.findViewById(R.id.editTextTipoObra);
         editTextReferencia = (EditText)  v.findViewById(R.id.editTextReferencia);
-        editTextVisitas = (EditText)  v.findViewById(R.id.editTextVisitas);
         editTextFechaInicio = (EditText)  v.findViewById(R.id.editTextFechaInicio);
         editTextFechaFinal = (EditText)  v.findViewById(R.id.editTextFechaFinal);
-//        editTextAlmacenFoto = (ImageView)  v.findViewById(R.id.imageViewCamara);
-
 
         // Precargamos el formulario
         editTextPromotor.setText(promotor);
@@ -103,36 +97,38 @@ public class EditObraDialogFragment extends DialogFragment {
         editTextTitulo.setText(titulo);
         editTextTipoObra.setText(tipoObra);
         editTextReferencia.setText(referencia);
-        editTextVisitas.setText((int) visitas);
         editTextFechaInicio.setText(fechaInicio);
         editTextFechaFinal.setText(fechaFinal);
-//        editTextAlmacenFoto.setImageDrawable(Drawable.createFromPath(almacenFoto));
 
         builder.setView(v);
 
         builder.setTitle("Editar Obra")
-                .setPositiveButton("Guardar", (dialog, id) ->  {
+                .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
                     String promotor = editTextPromotor.getText().toString();
                     String direccion = editTextDireccion.getText().toString();
                     String telefono = editTextPhone.getText().toString();
                     String titulo = editTextTitulo.getText().toString();
                     String tipoObra = editTextTipoObra.getText().toString();
                     String referencia = editTextReferencia.getText().toString();
-                    //long visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
-                    long visitasPrevistas;
-                    if(!editTextVisitas.getText().toString().isEmpty()){
-                        visitasPrevistas = Long.parseLong(editTextVisitas.getText().toString());
-                    }else{
-                        visitasPrevistas = 0;
-                    }
+                    /*            //long visitas = Long.parseLong(editTextVisitas.getText().toString());
+                                        long visitas;
+                                        if(!editTextVisitas.getText().toString().isEmpty()){
+                                            visitas = Long.parseLong(editTextVisitas.getText().toString());
+                                        }else{
+                                            visitas = 0;
+                                        }
+
+                     */
                     String fechaInicio = editTextFechaInicio.getText().toString();
                     String fechaFinal = editTextFechaFinal.getText().toString();
+
 
                     if(!promotor.isEmpty() && !titulo.isEmpty() && !referencia.isEmpty()
                             && !fechaInicio.isEmpty()){
                         mListener.onObraActualizarClickListener(idObra, promotor, direccion,
-                                telefono, titulo, tipoObra, referencia, visitasPrevistas,
-                                fechaInicio, fechaFinal);
+                                telefono, titulo, tipoObra, referencia, fechaInicio, fechaFinal);
 
                         Toast.makeText(getActivity(), "Obra editada", Toast.LENGTH_SHORT).show();
                         // Cierra el diálogo
@@ -140,6 +136,7 @@ public class EditObraDialogFragment extends DialogFragment {
                     } else {
                         Toast.makeText(ctx, "Introduzca los datos mínimos: Promotor, Título," +
                                 " Referencia y Fecha de Inicio.", Toast.LENGTH_SHORT).show();
+                    }
                     }
                 })
                 .setNegativeButton("Cancelar", (dialog, id) ->  {
@@ -149,6 +146,7 @@ public class EditObraDialogFragment extends DialogFragment {
         return builder.create();
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -159,7 +157,8 @@ public class EditObraDialogFragment extends DialogFragment {
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException(activity.toString()
-                    + " must implement OnObraInteractionListener");
+                    + " must implement OnNuevaObraListener");
         }
     }
+
 }

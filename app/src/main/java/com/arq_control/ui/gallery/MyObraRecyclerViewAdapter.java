@@ -22,7 +22,7 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
 
     private final RealmResults<ObraDB> mValues;
     private final OnObraInteractionListener mListener;
-    private Context ctx;
+    private final Context ctx;
     private RealmChangeListener listenerRefresco;
 
     public MyObraRecyclerViewAdapter(Context context, RealmResults<ObraDB> items,
@@ -51,40 +51,6 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
     }
 
     @Override
-    public int getItemCount() { return mValues.size(); }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        public final View mView;
-        public final TextView textViewPromotor;
-        public final TextView textViewTitulo;
-        public final TextView textViewTipo;
-        public final TextView textViewVisitas;
-//        public final ImageView imageViewCamara;
-        public final ImageView imageViewEditar;
-        public final TextView textViewReferencia;
-
-        public ObraDB mItem;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            textViewPromotor = (TextView) view.findViewById(R.id.textViewPromotor);
-            textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
-            textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
-            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
-//            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
-            imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
-            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + textViewTitulo.getText() + "'";
-        }
-    }
-
-    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.obra_item, parent, false);
@@ -94,48 +60,85 @@ public class MyObraRecyclerViewAdapter extends RecyclerView.Adapter<MyObraRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
+
         holder.textViewPromotor.setText(holder.mItem.getPromotor());
         holder.textViewTitulo.setText(holder.mItem.getTitulo());
         holder.textViewTipo.setText(holder.mItem.getTipoObra());
-        holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" Vis.");
+//        holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" Vis.");
         holder.textViewReferencia.setText("R: " + holder.mItem.getReferencia());
 
-/*        Glide.with(ctx)
-                .load(holder.mItem.getAlmacenFoto())
-                .into(holder.imageViewCamara);
-*/
+ /*       if(!holder.mItem.getAlmacenFoto().isEmpty()) {
+            Glide.with(ctx)
+                    .load(holder.mItem.getAlmacenFoto())
+                    .into(holder.imageViewCamara);
+        }
+  */
+
         holder.mView.setOnClickListener((v) -> {
             if (null != mListener){
                 mListener.OnObraClick(holder.mItem);
             }
         });
 
-/*        holder.imageViewEditar.setOnClickListener((v) ->  {
+        //Definimos el evento de editar una obra
+        holder.imageViewEditar.setOnClickListener((v) ->  {
+            if (null != mListener){
+                // Notifique a la interfaz la devolucion de la llamada que se ha
+                // seleccionado un elemento (si el fragment está adjunto a un activity) .
                 mListener.OnObraEdit(holder.mItem);
+            }
         });
-        //Definimos el evento de editar la obra
-//        holder.imageViewEditar.setOnClickListener((v) ->  {
-        holder.imageViewEditar.setOnClickListener(new View.OnClickListener() {
+
+        //Definimos el evento de eliminar una obra
+        holder.imageViewEliminarObra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener){
-                    mListener.OnObraEdit(holder.mItem);
-                }
-            }
-        });
-*/
-        holder.imageViewEditar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 if (null != mListener) {
-                    // Notifique a la interfaz la devolucion de la llamada que se ha
-                    // seleccionado un elemento (si el fragment está adjunto a un activity) .
-                    mListener.OnObraEdit(holder.mItem);
+                    mListener.OnObraEliminar(holder.mItem);
                 }
             }
         });
-
 
     }
+
+    @Override
+    public int getItemCount() { return mValues.size(); }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public final View mView;
+        public final TextView textViewPromotor;
+        public final TextView textViewTitulo;
+        public final TextView textViewTipo;
+//        public final TextView textViewVisitas;
+//        public final ImageView imageViewCamara;
+        public final ImageView imageViewEditar;
+        public final TextView textViewReferencia;
+        public final ImageView imageViewEliminarObra;
+
+        public ObraDB mItem;
+
+        public ViewHolder(View view) {
+            super(view);
+            mView = view;
+            textViewPromotor = (TextView) view.findViewById(R.id.textViewPromotor);
+            textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
+            textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
+//            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
+//            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
+            imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
+            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
+            imageViewEliminarObra = (ImageView) view.findViewById(R.id.imageViewEliminarObra);
+        }
+
+        @Override
+        public String toString() {
+            return super.toString() + " '" + textViewPromotor.getText() + "'";
+        }
+    }
+
+
+
+
 
 }

@@ -8,27 +8,39 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 public class VisitaDB extends RealmObject {
+
+    public static final String VISITADB_ID = "id";
+    public static final String VISITADB_REFERENCIA = "referencia";
+    public static final String VISITADB_TITULO = "titulo";
+    public static final String VISITADB_FECHA = "fecha";
+    public static final String VISITADB_NUMEROVISITA = "numeroVisita";
+    public static final String VISITADB_DESCRIPCION = "descripcion";
+    public static final String VISITADB_ALMACENFOTO = "almacenFoto";
+
     @PrimaryKey
     private long id;
     private String referencia;
     private String titulo;
     private Date fecha;
-    private String almacenFoto;
-    private String descripcion;
     private long numeroVisita;
+    private String descripcion;
+    private String almacenFoto;
+
 
     public VisitaDB() {
         this.id = MyApp.VisitaID.incrementAndGet();
     }
 
-    public VisitaDB(String referencia, String titulo, Date fecha, String almacenFoto, String descripcion, int numeroVisita) {
+    public VisitaDB(String referencia, String titulo, Date fecha, long numeroVisita,
+                    String descripcion, String almacenFoto) {
         this.id = MyApp.VisitaID.incrementAndGet();
         this.referencia = referencia;
         this.titulo = titulo;
         this.fecha = fecha;
-        this.almacenFoto = almacenFoto;
-        this.descripcion = descripcion;
         this.numeroVisita = numeroVisita;
+        this.descripcion = descripcion;
+        this.almacenFoto = almacenFoto;
+
     }
 
     public long getId() { return id; }
@@ -58,4 +70,5 @@ public class VisitaDB extends RealmObject {
     public long getNumeroVisita() { return numeroVisita; }
 
     public void setNumeroVisita(long numeroVisita) { this.numeroVisita = numeroVisita; }
+
 }
