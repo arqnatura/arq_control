@@ -44,7 +44,9 @@ public class InformeObraActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         // Tabla sobre la que queremos ejecutar la consulta ObraDB.class
         // Buscamos el primer elemento que concuerde con la consulta.
-        obraDB = realm.where(ObraDB.class).equalTo(ObraDB.OBRADB_ID, idObra).findFirstAsync();
+        obraDB = realm.where(ObraDB.class)
+                .equalTo(ObraDB.OBRADB_ID, idObra)
+                .findFirst();
 
          toolBarLayout.setTitle(obraDB.getTitulo());
          textViewInfo.setText("\n   Datos de la Obra___________"+
