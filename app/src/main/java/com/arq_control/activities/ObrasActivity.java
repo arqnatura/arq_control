@@ -110,7 +110,7 @@ public class ObrasActivity extends AppCompatActivity
                                            String titulo, String tipoObra, String referencia,
                                            String fechaInicio, String fechaFinal) {
 
-        realm.executeTransactionAsync(new Realm.Transaction() {
+        realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 ObraDB nuevaObra = new ObraDB();
@@ -134,7 +134,7 @@ public class ObrasActivity extends AppCompatActivity
                                               String referencia, String fechaInicio,
                                               String fechaFinal) {
 
-        realm.executeTransactionAsync(new Realm.Transaction() {
+        realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 ObraDB nuevaObra = new ObraDB();
@@ -166,7 +166,7 @@ public class ObrasActivity extends AppCompatActivity
         builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
-                realm.executeTransactionAsync(new Realm.Transaction() {
+                realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
                         long idObraEliminar = obraDB.getId();

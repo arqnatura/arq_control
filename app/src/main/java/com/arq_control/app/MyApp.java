@@ -1,7 +1,6 @@
 package com.arq_control.app;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.arq_control.models.ObraDB;
 import com.arq_control.models.VisitaDB;
@@ -38,6 +37,7 @@ public class MyApp extends Application {
     private void initRealm() {
         Realm.init(getApplicationContext());
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
+                .allowWritesOnUiThread (true)
                 .schemaVersion(1)
                 .deleteRealmIfMigrationNeeded()
                 .build();

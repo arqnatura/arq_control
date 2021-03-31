@@ -33,12 +33,9 @@ public class InformeObraActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_informe);
-        toolBarLayout.setTitle(getTitle());
-
 
         // Código del informe
         textViewInfo = (TextView) findViewById(R.id.texto_titulo_obra);
-//        textViewInfo = (TextView) findViewById(R.id.texto_id);
         // Rescatamos el ID de la obra.
         Bundle extras = getIntent().getExtras();
         idObra = extras.getLong(ObraDB.OBRADB_ID);
@@ -47,14 +44,19 @@ public class InformeObraActivity extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         // Tabla sobre la que queremos ejecutar la consulta ObraDB.class
         // Buscamos el primer elemento que concuerde con la consulta.
-        obraDB = realm.where(ObraDB.class).equalTo(ObraDB.OBRADB_ID, idObra).findFirst();
+        obraDB = realm.where(ObraDB.class).equalTo(ObraDB.OBRADB_ID, idObra).findFirstAsync();
 
-         setTitle(obraDB.getTitulo());
-         textViewInfo.setText("\n   Título: "+obraDB.getTitulo()+"\n   Promotor: "
-                 +obraDB.getPromotor()+"\n   Dirección: "+obraDB.getDireccion()+"\n   Teléfono: "+
-                 obraDB.getTelefono()+"\n   Tipo de Obra: "+obraDB.getTipoObra()+"\n   Referencia: "+
-                 obraDB.getReferencia()+"\n   Fecha de inicio: "+obraDB.getFechaInicio()+
-                 "\n   Fecha final: "+obraDB.getFechaFinal()+"\n   Número Identificación: "+obraDB.getId());
+         toolBarLayout.setTitle(obraDB.getTitulo());
+         textViewInfo.setText("\n   Datos de la Obra___________"+
+                              "\n   Título: "+obraDB.getTitulo()+
+                              "\n   Promotor: "+obraDB.getPromotor()+
+                              "\n   Dirección: "+obraDB.getDireccion()+
+                              "\n   Teléfono: "+obraDB.getTelefono()+
+                              "\n   Tipo de Obra: "+obraDB.getTipoObra()+
+                              "\n   Referencia: "+obraDB.getReferencia()+
+                              "\n   Fecha de inicio: "+obraDB.getFechaInicio()+
+                              "\n   Fecha final: "+obraDB.getFechaFinal()+
+                              "\n   Número Identificación: "+obraDB.getId());
 
 
          FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabVisita);

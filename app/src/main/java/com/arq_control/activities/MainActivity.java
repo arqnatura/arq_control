@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,10 +21,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity {
 
-//    Realm realm;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -37,7 +34,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         // Código de acción del botón flotante +
-       FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +82,11 @@ public class MainActivity extends AppCompatActivity
         }        return super.onOptionsItemSelected(item);
     }
 
-
+/*    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
+*/
     //Personalización de las acciones de los componentes del NavegationDrawer
     //@SuppressWarnings("StatementWithEmptyBody")
     //@Override
@@ -140,9 +141,12 @@ public class MainActivity extends AppCompatActivity
         Intent i = new Intent(this, ObrasActivity.class);
         startActivity(i);
     }
-    public void initActivityArchivo(View view){
+/*    public void initActivityArchivo(View view){
         Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, FinalizadasFragment.class);
+        startActivity(i);
     }
+ */
     public void initActivityAgenda(View view){
         Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
     }
@@ -160,9 +164,6 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(this, "Regresa a la anterior pantalla.", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
-    }
+
 }
 

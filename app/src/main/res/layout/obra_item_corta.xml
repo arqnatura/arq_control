@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:cardUseCompatPadding="false"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="14dp"
+    app:cardElevation="2dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="4dp">
+
+        <!--        <ImageView
+            android:id="@+id/imageViewCamara"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/camara"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_camera_24" />
+-->
+
+        <TextView
+            android:id="@+id/textViewPromotor"
+            android:layout_width="165dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:contentDescription="@string/string_promotor"
+            android:text="@string/string_promotor"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageViewVisita"
+            app:layout_constraintTop_toTopOf="@+id/imageViewVisita" />
+
+        <TextView
+            android:id="@+id/textViewTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:contentDescription="@string/titulo_obra"
+            android:text="@string/titulo_obra"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/textViewPromotor"
+            app:layout_constraintTop_toTopOf="@+id/textViewPromotor" />
+
+        <TextView
+            android:id="@+id/textViewTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/tipo_de_obra"
+            android:text="@string/tipo_de_obra"
+            app:layout_constraintStart_toStartOf="@+id/textViewPromotor"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPromotor" />
+
+        <ImageView
+            android:id="@+id/imageViewVisita"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:contentDescription="@string/iconovisitas"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_bookmarks_24px"
+            tools:ignore="VectorDrawableCompat" />
+
+        <!--        <TextView
+                    android:id="@+id/textViewVisitas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:contentDescription="@string/n_visitas"
+                    android:text="@string/n_visitas"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageViewVisita"
+                    app:layout_constraintStart_toEndOf="@+id/imageViewVisita"
+                app:layout_constraintTop_toTopOf="@+id/imageViewVisita" />
+-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -90,5 +90,7 @@
     <string name="texto_formulario1"><b>N</b>ombre del <b>promotor</b>, el <b>título</b>, su propia
         <b>referencia</b> y la <b>fecha de inicio</b> de la obra. </string>
     <string name="datos_obra">Datos de la Obra</string>
+    <string name="imagen_form_obra">imagen_form_obra</string>
+    <string name="app_bar_obra">app_bar_obra</string>
 
 </resources>
