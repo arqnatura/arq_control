@@ -45,9 +45,14 @@
             android:theme="@style/Theme.Arq_control.NoActionBar">
         </activity>
         <activity
-            android:name=".activities.VisitaActivity"
+            android:name=".activities.VisitasActivity"
             android:label="@string/title_activity_visita"
             android:theme="@style/Theme.Arq_control.NoActionBar" />
+        <activity
+            android:name=".activities.InformeVisitaActivity"
+            android:label="Informe Visita"
+            android:theme="@style/Theme.Arq_control.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

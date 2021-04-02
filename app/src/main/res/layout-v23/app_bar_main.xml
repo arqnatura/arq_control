@@ -29,10 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:contentDescription="TODO"
-        android:foreground="@drawable/ic_baseline_edit_24"
-        android:foregroundTint="@color/white"
+        android:foreground="@drawable/ic_baseline_edit_21"
         app:backgroundTint="@color/purple_500"
-        app:maxImageSize="24dp" />
+        app:maxImageSize="40dp"
+        android:contentDescription="@string/fab1" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

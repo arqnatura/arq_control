@@ -13,6 +13,7 @@ import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 public class MyApp extends Application {
+
     public static AtomicLong ObraID = new AtomicLong();
     public static AtomicLong VisitaID = new AtomicLong();
 

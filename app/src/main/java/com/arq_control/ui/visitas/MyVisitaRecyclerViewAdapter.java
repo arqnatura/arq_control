@@ -1,4 +1,4 @@
-package com.arq_control.ui.gallery;
+package com.arq_control.ui.visitas;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.arq_control.R;
-import com.arq_control.models.ObraDB;
+import com.arq_control.models.VisitaDB;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmChangeListener;
@@ -18,16 +18,16 @@ import io.realm.RealmList;
 import io.realm.RealmResults;
 
 
-public class MyObraRecyclerViewAdapter
-        extends RecyclerView.Adapter<MyObraRecyclerViewAdapter.ViewHolder> {
+public class MyVisitaRecyclerViewAdapter
+        extends RecyclerView.Adapter<MyVisitaRecyclerViewAdapter.ViewHolder> {
 
-    private final RealmResults<ObraDB> mValues;
-    private final OnObraInteractionListener mListener;
+    private final RealmResults<VisitaDB> mValues;
+    private final OnVisitaInteractionListener mListener;
     private final Context ctx;
     private RealmChangeListener listenerRefresco;
 
-    public MyObraRecyclerViewAdapter(Context context, RealmResults<ObraDB> items,
-                                     OnObraInteractionListener listener) {
+    public MyVisitaRecyclerViewAdapter(Context context, RealmResults<VisitaDB> items,
+                                       OnVisitaInteractionListener listener) {
         ctx = context;
         mValues = items;
         mListener = listener;
@@ -39,12 +39,12 @@ public class MyObraRecyclerViewAdapter
         }
     }
 
-    private void addListener(OrderedRealmCollection<ObraDB> items) {
+    private void addListener(OrderedRealmCollection<VisitaDB> items) {
         if (items instanceof RealmResults){
             RealmResults realmResults = (RealmResults) items;
             realmResults.addChangeListener(listenerRefresco);
         }else if (items instanceof RealmList){
-            RealmList<ObraDB> list = (RealmList<ObraDB>) items;
+            RealmList<VisitaDB> list = (RealmList<VisitaDB>) items;
             list.addChangeListener((RealmChangeListener) listenerRefresco);
         }else {
             throw new IllegalArgumentException("RealmCollection not supported: " + items.getClass());
@@ -54,7 +54,7 @@ public class MyObraRecyclerViewAdapter
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.obra_item, parent, false);
+                .inflate(R.layout.visita_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -62,41 +62,42 @@ public class MyObraRecyclerViewAdapter
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
 
-        holder.textViewPromotor.setText(holder.mItem.getPromotor());
-        holder.textViewTitulo.setText(holder.mItem.getTitulo());
-        holder.textViewTipo.setText(holder.mItem.getTipoObra());
-//        holder.textViewVisitas.setText(holder.mItem.getNumeroVisitas()+" Vis.");
-//        holder.textViewReferencia.setText("R: " + holder.mItem.getReferencia());
+        holder.textViewTitulo.setText(holder.mItem.getTituloVisita());
+        holder.textViewFecha.setText(holder.mItem.getFecha());
+//        holder.textViewVisitas.setText((int) holder.mItem.getNumeroVisita());
+        holder.textViewVisitas.setText(holder.mItem.getNumeroVisita()+" Visita/s");
 
-/*        if(!holder.mItem.getAlmacenFoto().isEmpty()) {
+ /*       if(!holder.mItem.getAlmacenFoto().isEmpty()) {
             Glide.with(ctx)
                     .load(holder.mItem.getAlmacenFoto())
                     .into(holder.imageViewCamara);
         }
- */
 
-        //Activamos el evento clic que activa el informe de obra seleccionado.
+  */
+
+
+        //Activamos el evento clic que activa el informe de visita seleccionado.
         holder.mView.setOnClickListener((v) -> {
             if (null != mListener){
-                mListener.OnObraClick(holder.mItem);
+                mListener.OnVisitaClick(holder.mItem);
             }
         });
 
         //Definimos el evento de editar una obra
-        holder.imageViewEditar.setOnClickListener((v) ->  {
+        holder.imageViewEditarVisita.setOnClickListener((v) ->  {
             if (null != mListener){
                 // Notifique a la interfaz la devolucion de la llamada que se ha
                 // seleccionado un elemento (si el fragment está adjunto a un activity) .
-                mListener.OnObraEdit(holder.mItem);
+                mListener.OnVisitaEdit(holder.mItem);
             }
         });
 
         //Definimos el evento de eliminar una obra
-        holder.imageViewEliminarObra.setOnClickListener(new View.OnClickListener() {
+        holder.imageViewEliminarVisita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    mListener.OnObraEliminar(holder.mItem);
+                    mListener.OnVisitaEliminar(holder.mItem);
                 }
             }
         });
@@ -108,33 +109,29 @@ public class MyObraRecyclerViewAdapter
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
-        public final TextView textViewPromotor;
         public final TextView textViewTitulo;
-        public final TextView textViewTipo;
-//        public final TextView textViewVisitas;
-//        public final ImageView imageViewCamara;
-        public final ImageView imageViewEditar;
-//        public final TextView textViewReferencia;
-        public final ImageView imageViewEliminarObra;
+        public final TextView textViewVisitas;
+        public final TextView textViewFecha;
+        public final ImageView imageViewCamara;
+        public final ImageView imageViewEditarVisita;
+        public final ImageView imageViewEliminarVisita;
 
-        public ObraDB mItem;
+        public VisitaDB mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            textViewPromotor = (TextView) view.findViewById(R.id.textViewPromotor);
+            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
             textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
-            textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
-//            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
-//            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
-            imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
-//            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
-            imageViewEliminarObra = (ImageView) view.findViewById(R.id.imageViewEliminarObra);
+            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
+            textViewFecha = (TextView) view.findViewById(R.id.textViewFecha);
+            imageViewEditarVisita = (ImageView) view.findViewById(R.id.imageViewEditarVisita);
+            imageViewEliminarVisita = (ImageView) view.findViewById(R.id.imageViewEliminarVisita);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + textViewPromotor.getText() + "'";
+            return super.toString() + " '" + textViewTitulo.getText() + "'";
         }
     }
 

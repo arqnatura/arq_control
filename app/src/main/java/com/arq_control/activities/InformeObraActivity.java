@@ -67,7 +67,7 @@ public class InformeObraActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Visita de Obra", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                Intent miIntent = new Intent(InformeObraActivity.this, VisitaActivity.class);
+                Intent miIntent = new Intent(InformeObraActivity.this, VisitasActivity.class);
                 startActivity(miIntent);
             }
          });

@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private AppBarConfiguration mAppBarConfiguration;
+
+    DialogFragment dialogoNuevaVisita;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,11 +132,28 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+ /*   public void OnObraVisitar(View view) {
+        Snackbar.make(view, "Nueva Visita", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+        Toast.makeText(this, "Ver Listado de Visitas en Curso...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, VisitasActivity.class);
+        startActivity(i);
+    }
+
+
+    @Override
+    public void OnObraVisitar(VisitaDB visitaDB) {
+        Toast.makeText(this, "Visitas", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, VisitasActivity.class);
+        i.putExtra(VisitaDB.VISITADB_ID, visitaDB.getIdVisita());
+        startActivity(i);
+    }
+ */
 
     // Acciones de los botones principales
     public void initActivityObraNueva(View view){
         Toast.makeText(this, "Crea una nueva visita de obra...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, VisitaActivity.class);
+        Intent i = new Intent(this, InformeVisitaActivity.class);
         startActivity(i);
     }
     public void initActivityObraCurso(View view){

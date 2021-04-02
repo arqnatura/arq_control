@@ -64,7 +64,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="n_visitas">Nº Visitas:</string>
+    <string name="n_visitas">NºVisit</string>
     <string name="referencia">Referencia:</string>
     <string name="titulo_obra">Titulo Obra:</string>
     <string name="string_promotor">Promotor:</string>
@@ -86,11 +86,24 @@
     <string name="fecha_final">Fecha Final:</string>
     <string name="eliminarobra">Eliminar Obra</string>
     <string name="texto_formulario"><big><b>E</b></big>n esta pantalla se introducen los datos
-        iniciales de la obra. Tenga en cuenta que debe introducir como mínimo:\n</string>
+        iniciales de la obra. Tenga en cuenta que debe introducir como mínimo:</string>
     <string name="texto_formulario1"><b>N</b>ombre del <b>promotor</b>, el <b>título</b>, su propia
         <b>referencia</b> y la <b>fecha de inicio</b> de la obra. </string>
+    <string name="texto_formulario_visita"><big><b>E</b></big>n este formulario se introducen los
+        datos recabados en la <b>visita de obra</b>. Tenga en cuenta que debe introducir como mínimo:
+    </string>
+    <string name="texto_formulario2"><b>Motivo</b>, y <b>fecha</b> de la <b>visita</b>. </string>
     <string name="datos_obra">Datos de la Obra</string>
     <string name="imagen_form_obra">imagen_form_obra</string>
     <string name="app_bar_obra">app_bar_obra</string>
+    <string name="fecha">Fecha Visita</string>
+
+    <string name="botoneditarvisita">botonEditarVisita</string>
+    <string name="motivo_de_la_visita">Motivo de la visita:</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="visitas">Visitas</string>
+    <string name="titulo_visita">Título visita:</string>
+    <string name="eliminarvisita">Eliminar Visita</string>
+    <string name="fab1">FAB1</string>
 
 </resources>

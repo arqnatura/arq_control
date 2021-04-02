@@ -16,7 +16,6 @@ import androidx.fragment.app.DialogFragment;
 import com.arq_control.R;
 
 public class NuevaObraDialogo extends DialogFragment {
-
     AlertDialog.Builder builder;
     OnNuevaObraListener mListenerA;
     View v;

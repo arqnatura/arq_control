@@ -80,18 +80,15 @@
             app:srcCompat="@drawable/ic_bookmarks_24px"
             tools:ignore="VectorDrawableCompat" />
 
-        <!--        <TextView
-                    android:id="@+id/textViewVisitas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginLeft="4dp"
-                    android:contentDescription="@string/n_visitas"
-                    android:text="@string/n_visitas"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageViewVisita"
-                    app:layout_constraintStart_toEndOf="@+id/imageViewVisita"
-                app:layout_constraintTop_toTopOf="@+id/imageViewVisita" />
--->
+        <TextView
+            android:id="@+id/textViewReferencia"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:contentDescription="@string/referencia"
+            android:text="@string/referencia"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTipo"
+            app:layout_constraintStart_toStartOf="@+id/textViewTitulo" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

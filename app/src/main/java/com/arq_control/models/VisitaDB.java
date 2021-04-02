@@ -2,66 +2,60 @@ package com.arq_control.models;
 
 import com.arq_control.app.MyApp;
 
-import java.util.Date;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 
 public class VisitaDB extends RealmObject {
 
     public static final String VISITADB_ID = "id";
-    public static final String VISITADB_REFERENCIA = "referencia";
-    public static final String VISITADB_TITULO = "titulo";
+    public static final String VISITADB_TITULO = "tituloVisita";
     public static final String VISITADB_FECHA = "fecha";
     public static final String VISITADB_NUMEROVISITA = "numeroVisita";
     public static final String VISITADB_DESCRIPCION = "descripcion";
-    public static final String VISITADB_ALMACENFOTO = "almacenFoto";
+//    public static final String VISITADB_ALMACENFOTO = "almacenFoto";
 
     @PrimaryKey
     private long id;
-    private String referencia;
-    private String titulo;
-    private Date fecha;
+    @Required
+    private String tituloVisita;
+    @Required
+    private String fecha;
     private long numeroVisita;
     private String descripcion;
-    private String almacenFoto;
+//    private String almacenFoto;
 
 
     public VisitaDB() {
         this.id = MyApp.VisitaID.incrementAndGet();
     }
 
-    public VisitaDB(String referencia, String titulo, Date fecha, long numeroVisita,
-                    String descripcion, String almacenFoto) {
+    public VisitaDB(String tituloVisita, String fecha, long numeroVisita, String descripcion) {
+
         this.id = MyApp.VisitaID.incrementAndGet();
-        this.referencia = referencia;
-        this.titulo = titulo;
+        this.tituloVisita = tituloVisita;
         this.fecha = fecha;
         this.numeroVisita = numeroVisita;
         this.descripcion = descripcion;
-        this.almacenFoto = almacenFoto;
+//        this.almacenFoto = almacenFoto;
 
     }
 
-    public long getId() { return id; }
+    public long getIdVisita() { return id; }
 
-    public void setId(long id) { this.id = id; }
+    public void setIdVisita(long id) { this.id = id; }
 
-    public String getReferencia() { return referencia; }
+    public String getTituloVisita() { return tituloVisita; }
 
-    public void setReferencia(String referencia) { this.referencia = referencia; }
+    public void setTituloVisita(String titulo) { this.tituloVisita = titulo; }
 
-    public String getTitulo() { return titulo; }
+    public String getFecha() { return fecha; }
 
-    public void setTitulo(String titulo) { this.titulo = titulo; }
+    public void setFecha(String fecha) { this.fecha = fecha; }
 
-    public Date getFecha() { return fecha; }
+//    public String getAlmacenFoto() { return almacenFoto; }
 
-    public void setFecha(Date fecha) { this.fecha = fecha; }
-
-    public String getAlmacenFoto() { return almacenFoto; }
-
-    public void setAlmacenFoto(String almacenFoto) { this.almacenFoto = almacenFoto; }
+//    public void setAlmacenFoto(String almacenFoto) { this.almacenFoto = almacenFoto; }
 
     public String getDescripcion() { return descripcion; }
 

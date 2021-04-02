@@ -63,6 +63,8 @@ public class MyObraCortaRecyclerViewAdapter extends RecyclerView.Adapter<MyObraC
         holder.textViewPromotor.setText(holder.mItem.getPromotor());
         holder.textViewTitulo.setText(holder.mItem.getTitulo());
         holder.textViewTipo.setText(holder.mItem.getTipoObra());
+        holder.textViewTitulo.setText(holder.mItem.getTitulo());
+        holder.textViewReferencia.setText(holder.mItem.getReferencia());
     }
 
     @Override
@@ -74,6 +76,7 @@ public class MyObraCortaRecyclerViewAdapter extends RecyclerView.Adapter<MyObraC
         public final TextView textViewPromotor;
         public final TextView textViewTitulo;
         public final TextView textViewTipo;
+        public final TextView textViewReferencia;
 
         public ObraDB mItem;
 
@@ -83,6 +86,7 @@ public class MyObraCortaRecyclerViewAdapter extends RecyclerView.Adapter<MyObraC
             textViewPromotor = (TextView) view.findViewById(R.id.textViewPromotor);
             textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
             textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
+            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
         }
 
         @Override
