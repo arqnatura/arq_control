@@ -24,6 +24,7 @@ import io.realm.Realm;
 public class InformeVisitaActivity extends AppCompatActivity {
 
     TextView textViewInfo;
+    long idObra, idVisita;
     Realm realm;
     VisitaDB visitaDB;
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -38,7 +39,29 @@ public class InformeVisitaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_visita);
-        toolBarLayout.setTitle(getTitle());
+
+
+        // Código del informe
+        textViewInfo = (TextView) findViewById(R.id.texto_titulo_visita);
+        // Rescatamos el ID de la visita.
+        Bundle extras = getIntent().getExtras();
+        idVisita = extras.getLong(VisitaDB.VISITADB_ID);
+        // Rescatamos los registros de la base de datos Realm de esa obra.
+        realm = Realm.getDefaultInstance();
+        // Tabla sobre la que queremos ejecutar la consulta ObraDB.class
+        // Buscamos el primer elemento que concuerde con la consulta.
+        visitaDB = realm.where(VisitaDB.class)
+                .equalTo(VisitaDB.VISITADB_ID, idVisita)
+                .findFirst();
+
+        toolBarLayout.setTitle(visitaDB.getTituloVisita());
+        textViewInfo.setText("\nDatos de la Visita ___________"+
+                "\n   Motivo: "+visitaDB.getTituloVisita()+
+                "\n   Fecha: "+visitaDB.getFecha()+
+                "   Nº Visitas: "+visitaDB.getNumeroVisita()+
+                "\nDescripción ________________\n"+visitaDB.getDescripcion()+
+                "\n   Fecha Visita: "+visitaDB.getFecha()+
+                "    Id: "+visitaDB.getIdVisita());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabFoto);
         imageView = (ImageView) findViewById(R.id.imageHeader);

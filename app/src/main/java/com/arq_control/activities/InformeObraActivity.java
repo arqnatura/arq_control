@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import io.realm.Realm;
 
 public class InformeObraActivity extends AppCompatActivity {
+
     TextView textViewInfo;
     long idObra;
     Realm realm;

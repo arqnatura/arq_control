@@ -23,7 +23,8 @@ public class EditVisitaDialogFragment extends DialogFragment {
     OnNuevaVisitaListener mListener;
     View v;
 
-    private long idVisita, numeroVisita;
+    private long idVisita;
+    private long numeroVisita;
     private String tituloVisita, fecha, descripcion, almacenFoto;
     EditText editTextTituloVisita, editTextFecha, editTextVisitas,
             editTextDescripcion, editTextAlmacenFoto;
@@ -73,55 +74,52 @@ public class EditVisitaDialogFragment extends DialogFragment {
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         v =inflater.inflate(R.layout.dialogo_nueva_visita, null);
-        editTextTituloVisita = (EditText)  v.findViewById(R.id.editTextTituloVisita);
-        editTextFecha = (EditText)  v.findViewById(R.id.editTextFecha);
-        editTextVisitas = (EditText)  v.findViewById(R.id.editTextNumeroVisita);
-        editTextDescripcion = (EditText)  v.findViewById(R.id.editTextDescripcion);
+        editTextTituloVisita = v.findViewById(R.id.editTextTituloVisita);
+        editTextFecha = v.findViewById(R.id.editTextFecha);
+        editTextVisitas = v.findViewById(R.id.editTextNumeroVisita);
+        editTextDescripcion= v.findViewById(R.id.editTextDescripcion);
 //        editTextAlmacenFoto = (EditText)  v.findViewById(R.id.editTextAlmacenFoto);
 
         // Precargamos el formulario
         editTextTituloVisita.setText(tituloVisita);
         editTextFecha.setText(fecha);
-        editTextVisitas.setText((int) numeroVisita);
+        editTextVisitas.setText(Long.toString((int) numeroVisita));
         editTextDescripcion.setText(descripcion);
 //        editTextAlmacenFoto.setText(almacenFoto);
 
 
         builder.setView(v);
 
-        builder.setTitle("Editar Visita")
-                .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+        builder.setTitle("Editar Visita");
+        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
 
-                    String tituloVisita = editTextTituloVisita.getText().toString();
-                    String fecha = editTextFecha.getText().toString();
-                    String descripcion = editTextDescripcion.getText().toString();
+                String tituloVisita = editTextTituloVisita.getText().toString();
+                String fecha = editTextFecha.getText().toString();
+
 //                    String almacenFoto = editTextAlmacenFoto.getText().toString();
-                    //long visitas = Long.parseLong(editTextNumeroVisita.getText().toString());
-                            long numeroVisita;
-                            if(!editTextVisitas.getText().toString().isEmpty()){
-                                numeroVisita = Long.parseLong(editTextVisitas.getText().toString());
-                            }else{
-                                numeroVisita = 1;
-                            }
+                //long visitas = Long.parseLong(editTextVisitas.getText().toString());
+                long numeroVisita = Long.parseLong(editTextVisitas.getText().toString());
 
-                        if (!tituloVisita.isEmpty() && !fecha.isEmpty()) {
-                            mListener.onVisitaGuardarClickListener(tituloVisita, fecha, numeroVisita,
-                                    descripcion);
+                String descripcion = editTextDescripcion.getText().toString();
 
-                        Toast.makeText(getActivity(), "Visita editada", Toast.LENGTH_SHORT).show();
-                        // Cierra el diálogo
-                        dialog.dismiss();
-                    } else {
-                            Toast.makeText(ctx, "Introduzca los datos mínimos: Título," +
-                                    " y Fecha  de la visita.", Toast.LENGTH_LONG).show();
-                    }
-                    }
-                })
-                .setNegativeButton("Cancelar", (dialog, id) ->  {
-                    // Cancelar > cerrar el cuadro de diálogo
+                if (!tituloVisita.isEmpty() && !fecha.isEmpty()) {
+                    mListener.onVisitaGuardarClickListener(tituloVisita, fecha, numeroVisita,
+                            descripcion);
+
+                    Toast.makeText(getActivity(), "Visita editada", Toast.LENGTH_SHORT).show();
+                    // Cierra el diálogo
                     dialog.dismiss();
-                });
+                } else {
+                    Toast.makeText(ctx, "Introduzca los datos mínimos: Título," +
+                            " y Fecha  de la visita.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancelar", (dialog, id) -> {
+            // Cancelar > cerrar el cuadro de diálogo
+            dialog.dismiss();
+        });
         return builder.create();
     }
 

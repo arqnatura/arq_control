@@ -105,5 +105,6 @@
     <string name="titulo_visita">Título visita:</string>
     <string name="eliminarvisita">Eliminar Visita</string>
     <string name="fab1">FAB1</string>
+    <string name="fab2">Fab2</string>
 
 </resources>

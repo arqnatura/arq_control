@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,8 @@ public class ListadoVisitasFragment extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
             // Hacemos la consulta a la DB y obtenemos todos los registros.
+            //
+
             visitasDBList = realm.where(VisitaDB.class).findAll();
             recyclerView.setAdapter(new MyVisitaRecyclerViewAdapter(getActivity(), visitasDBList,
                     mListener));
@@ -50,10 +53,10 @@ public class ListadoVisitasFragment extends Fragment {
     }
 
 
-/*    @Override
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof OnObraInteractionListener) {
+        if (context instanceof OnVisitaInteractionListener) {
             mListener = (OnVisitaInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
@@ -67,6 +70,6 @@ public class ListadoVisitasFragment extends Fragment {
         mListener = null;
     }
 
- */
+
 
 }

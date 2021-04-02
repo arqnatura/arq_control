@@ -10,12 +10,15 @@
     tools:showIn="@layout/activity_informe_visita">
 
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextView"
+    <TextView
+        android:id="@+id/texto_titulo_visita"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+        android:text="Datos de la Visita."
+        android:textSize="20sp"
+        android:lineSpacingExtra="8sp"
+        android:textStyle=""/>
 
 
 </androidx.core.widget.NestedScrollView>

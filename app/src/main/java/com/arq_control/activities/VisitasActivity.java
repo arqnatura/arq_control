@@ -56,7 +56,6 @@ public class VisitasActivity extends AppCompatActivity
                 .commit();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
         getMenuInflater().inflate(R.menu.menu_obra, menu);
