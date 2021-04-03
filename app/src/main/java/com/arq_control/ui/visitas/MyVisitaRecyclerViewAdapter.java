@@ -21,12 +21,12 @@ import io.realm.RealmResults;
 public class MyVisitaRecyclerViewAdapter
         extends RecyclerView.Adapter<MyVisitaRecyclerViewAdapter.ViewHolder> {
 
-    private final RealmResults<VisitaDB> mValues;
+    private final RealmList<VisitaDB> mValues;
     private final OnVisitaInteractionListener mListener;
     private final Context ctx;
     private RealmChangeListener listenerRefresco;
 
-    public MyVisitaRecyclerViewAdapter(Context context, RealmResults<VisitaDB> items,
+    public MyVisitaRecyclerViewAdapter(Context context, RealmList<VisitaDB> items,
                                        OnVisitaInteractionListener listener) {
         ctx = context;
         mValues = items;

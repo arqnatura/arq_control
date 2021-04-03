@@ -64,7 +64,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="n_visitas">NºVisit</string>
+    <string name="n_visitas">Visitas</string>
     <string name="referencia">Referencia:</string>
     <string name="titulo_obra">Titulo Obra:</string>
     <string name="string_promotor">Promotor:</string>
@@ -96,10 +96,10 @@
     <string name="datos_obra">Datos de la Obra</string>
     <string name="imagen_form_obra">imagen_form_obra</string>
     <string name="app_bar_obra">app_bar_obra</string>
-    <string name="fecha">Fecha Visita</string>
+    <string name="fecha">Fecha: </string>
 
     <string name="botoneditarvisita">botonEditarVisita</string>
-    <string name="motivo_de_la_visita">Motivo de la visita:</string>
+    <string name="motivo_de_la_visita">Motivo: </string>
     <string name="descripcion">Descripción:</string>
     <string name="visitas">Visitas</string>
     <string name="titulo_visita">Título visita:</string>

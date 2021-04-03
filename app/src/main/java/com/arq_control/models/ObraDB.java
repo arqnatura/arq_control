@@ -2,6 +2,7 @@ package com.arq_control.models;
 
 import com.arq_control.app.MyApp;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -34,6 +35,7 @@ public class ObraDB extends RealmObject {
     private String fechaInicio;
     private String fechaFinal;
 
+    public RealmList<VisitaDB> visitas;
 
     public ObraDB() {
         this.id = MyApp.ObraID.incrementAndGet();

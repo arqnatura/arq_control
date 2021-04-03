@@ -90,19 +90,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageViewIconoVisita" />
 
 
-        <!--        <TextView
-                   android:id="@+id/textViewReferencia"
-                   android:layout_width="80dp"
-                   android:layout_height="20dp"
-                   android:layout_marginStart="4dp"
-                   android:layout_marginLeft="4dp"
-                   android:contentDescription="@string/referencia"
-                   android:text="@string/referencia"
-                   android:textStyle="bold"
-                   app:layout_constraintBottom_toBottomOf="@+id/imageViewVisita"
-                   app:layout_constraintStart_toEndOf="@+id/imageViewVisita"
-              app:layout_constraintTop_toTopOf="@+id/imageViewVisita" />
-
+        <!--
                <ImageView
                    android:id="@+id/imageViewCamara"
                    android:layout_width="50dp"

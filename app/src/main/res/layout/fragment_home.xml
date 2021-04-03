@@ -10,7 +10,7 @@
 
     <Button
         android:id="@+id/buttonPlus"
-        android:onClick="initActivityObraNueva"
+        android:onClick="initActivityVisitaNueva"
         android:layout_width="169dp"
         android:layout_height="149dp"
         android:background="@android:color/transparent"

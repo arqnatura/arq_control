@@ -56,6 +56,7 @@
         app:layout_anchor="@id/app_bar_obra"
         app:layout_anchorGravity="bottom|end"
         app:maxImageSize="34dp"
-        app:srcCompat="@drawable/ic_menu_build" />
+        android:foreground="@mipmap/arq_regresar_36dp"
+        android:foregroundTint="@color/black"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

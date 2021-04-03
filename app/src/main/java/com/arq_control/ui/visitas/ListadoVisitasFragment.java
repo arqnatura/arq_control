@@ -12,14 +12,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.arq_control.R;
+import com.arq_control.models.ObraDB;
 import com.arq_control.models.VisitaDB;
 
 import io.realm.Realm;
-import io.realm.RealmResults;
+import io.realm.RealmList;
 
 public class ListadoVisitasFragment extends Fragment {
+
     OnVisitaInteractionListener mListener;
-    RealmResults<VisitaDB> visitasDBList;
+    RealmList<VisitaDB> visitasDBList;
+
+    VisitaDB visitaDB;
+    ObraDB obraDB;
+    long idObra, idVisita;
+
     Realm realm;
 
     public ListadoVisitasFragment() {
@@ -32,8 +39,9 @@ public class ListadoVisitasFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_visitas_list, container, false);
 
         // Set the adapter
@@ -42,10 +50,19 @@ public class ListadoVisitasFragment extends Fragment {
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-            // Hacemos la consulta a la DB y obtenemos todos los registros.
-            //
+            // Rescatamos el ID de la visita.
+            Bundle extras = getActivity().getIntent().getExtras();
+            idObra = extras.getLong("obraId");
+            // Tabla sobre la que queremos ejecutar la consulta VisitaDB.class
+            // Buscamos el primer elemento que concuerde con la consulta.
+            obraDB = realm.where(ObraDB.class)
+                    .equalTo(ObraDB.OBRADB_ID, idObra)
+                    .findFirst();
 
-            visitasDBList = realm.where(VisitaDB.class).findAll();
+            // Hacemos la consulta a la DB y obtenemos todos los registros.
+//            visitasDBList = realm.where(VisitaDB.class)
+            visitasDBList = obraDB.visitas;
+
             recyclerView.setAdapter(new MyVisitaRecyclerViewAdapter(getActivity(), visitasDBList,
                     mListener));
         }

@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 import com.arq_control.R;
+import com.arq_control.models.ObraDB;
 import com.arq_control.models.VisitaDB;
 import com.arq_control.ui.visitas.EditVisitaDialogFragment;
 import com.arq_control.ui.visitas.ListadoVisitasFragment;
@@ -29,6 +30,7 @@ public class VisitasActivity extends AppCompatActivity
 
     DialogFragment dialogoNuevaVisita, dialogEditVisita;
     Realm realm;
+    ObraDB obra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +50,20 @@ public class VisitasActivity extends AppCompatActivity
 
         // Instanciamos el método de Realm getDefaultInstance
         realm = Realm.getDefaultInstance();
-
         // Rescatamos el contenedor y le cargamos un fragmento
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.containerVisitas, new ListadoVisitasFragment())
                 .commit();
+
+        // Rescatamos el ID de la visita.
+        Bundle extras = getIntent().getExtras();
+        long idObra = extras.getLong("obraId");
+
+        obra = realm.where(ObraDB.class)
+                .equalTo("id",idObra)
+                .findFirst();
+
     }
 
     @Override
@@ -96,7 +106,9 @@ public class VisitasActivity extends AppCompatActivity
                 nuevaVisita.setNumeroVisita(numeroVisita);
                 nuevaVisita.setDescripcion(descripcion);
 
-                realm.copyToRealm(nuevaVisita);
+                    obra.visitas.add(nuevaVisita);
+
+                realm.copyToRealmOrUpdate(nuevaVisita);
             }
         });
     }
@@ -114,7 +126,7 @@ public class VisitasActivity extends AppCompatActivity
                 nuevaVisita.setNumeroVisita(numeroVisita);
                 nuevaVisita.setDescripcion(descripcion);
 
-                realm.copyToRealm(nuevaVisita);
+                realm.copyToRealmOrUpdate(nuevaVisita);
             }
         });
 

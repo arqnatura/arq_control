@@ -66,9 +66,10 @@ public class InformeObraActivity extends AppCompatActivity {
          fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Visita de Obra", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Visitas de Obra", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Intent miIntent = new Intent(InformeObraActivity.this, VisitasActivity.class);
+                miIntent.putExtra("obraId", obraDB.getId());
                 startActivity(miIntent);
             }
          });

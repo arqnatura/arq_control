@@ -27,6 +27,7 @@ public class InformeVisitaActivity extends AppCompatActivity {
     long idObra, idVisita;
     Realm realm;
     VisitaDB visitaDB;
+//    ObraDB obraDB;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView imageView;
 
@@ -46,19 +47,21 @@ public class InformeVisitaActivity extends AppCompatActivity {
         // Rescatamos el ID de la visita.
         Bundle extras = getIntent().getExtras();
         idVisita = extras.getLong(VisitaDB.VISITADB_ID);
-        // Rescatamos los registros de la base de datos Realm de esa obra.
+        // Rescatamos los registros de la base de datos Realm de esa visita.
         realm = Realm.getDefaultInstance();
-        // Tabla sobre la que queremos ejecutar la consulta ObraDB.class
+        // Tabla sobre la que queremos ejecutar la consulta VisitaDB.class
         // Buscamos el primer elemento que concuerde con la consulta.
         visitaDB = realm.where(VisitaDB.class)
                 .equalTo(VisitaDB.VISITADB_ID, idVisita)
                 .findFirst();
 
         toolBarLayout.setTitle(visitaDB.getTituloVisita());
+
         textViewInfo.setText("\nDatos de la Visita ___________"+
                 "\n   Motivo: "+visitaDB.getTituloVisita()+
+//                "\n   Promotor: "+obraDB.getPromotor()+
                 "\n   Fecha: "+visitaDB.getFecha()+
-                "   Nº Visitas: "+visitaDB.getNumeroVisita()+
+                "   Visita Nº: "+visitaDB.getNumeroVisita()+
                 "\nDescripción ________________\n"+visitaDB.getDescripcion()+
                 "\n   Fecha Visita: "+visitaDB.getFecha()+
                 "    Id: "+visitaDB.getIdVisita());

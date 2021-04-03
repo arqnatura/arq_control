@@ -147,9 +147,9 @@ public class MainActivity extends AppCompatActivity {
  */
 
     // Acciones de los botones principales
-    public void initActivityObraNueva(View view){
+    public void initActivityVisitaNueva(View view){
         Toast.makeText(this, "Crea una nueva visita de obra...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, InformeVisitaActivity.class);
+        Intent i = new Intent(this, VisitasActivity.class);
         startActivity(i);
     }
     public void initActivityObraCurso(View view){

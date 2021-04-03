@@ -15,11 +15,16 @@ import androidx.fragment.app.DialogFragment;
 
 import com.arq_control.R;
 
+import io.realm.Realm;
+
 public class NuevaVisitaDialogo extends DialogFragment {
 
     AlertDialog.Builder builder;
     OnNuevaVisitaListener mListenerB;
     View v;
+
+    long idObra;
+    Realm realm;
 
     EditText editTextTituloVisita, editTextFecha, editTextVisitas,
             editTextDescripcion, editTextAlmacenFoto;
@@ -47,7 +52,7 @@ public class NuevaVisitaDialogo extends DialogFragment {
         builder.setPositiveButton("Guardar", (dialog, id) -> {
             String tituloVisita = editTextTituloVisita.getText().toString();
             String fecha = editTextFecha.getText().toString();
-//            String descripcion = editTextDescripcion.getText().toString();
+
 //            String almacenFoto = editTextAlmacenFoto.getText().toString();
             // Evitamos que el campo Visitas Previstas quede vacío.
             long numeroVisita;
@@ -57,6 +62,7 @@ public class NuevaVisitaDialogo extends DialogFragment {
                 numeroVisita = 1;
             }
             String descripcion = editTextDescripcion.getText().toString();
+            
 
             if (!tituloVisita.isEmpty() && !fecha.isEmpty()) {
                 mListenerB.onVisitaGuardarClickListener(tituloVisita, fecha, numeroVisita,

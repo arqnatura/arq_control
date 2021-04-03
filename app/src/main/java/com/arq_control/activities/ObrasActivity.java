@@ -59,7 +59,6 @@ public class ObrasActivity extends AppCompatActivity
  */
         // Instanciamos el método de Realm getDefaultInstance
         realm = Realm.getDefaultInstance();
-
         // Rescatamos el contenedor y le cargamos un fragmento
         getSupportFragmentManager()
                 .beginTransaction()
