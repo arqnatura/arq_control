@@ -37,12 +37,11 @@ public class ObraDB extends RealmObject {
 
     public RealmList<VisitaDB> visitas;
 
-    public ObraDB() {
-        this.id = MyApp.ObraID.incrementAndGet();
-    }
+    public ObraDB() { this.id = MyApp.ObraID.incrementAndGet(); }
 
     public ObraDB(String promotor, String direccion, String telefono, String titulo,
-                  String tipoObra, String referencia, String fechaInicio, String fechaFinal) {
+                  String tipoObra, String referencia, String fechaInicio, String fechaFinal,
+                  RealmList<VisitaDB> visitas) {
 
         this.id = MyApp.ObraID.incrementAndGet();
         this.promotor = promotor;
@@ -53,6 +52,8 @@ public class ObraDB extends RealmObject {
         this.referencia = referencia;
         this.fechaInicio = fechaInicio;
         this.fechaFinal = fechaFinal;
+        this.visitas = visitas;
+
     }
 
     // Estandar getters y setters generados por IDE.
@@ -91,5 +92,9 @@ public class ObraDB extends RealmObject {
     public String getFechaFinal() { return fechaFinal; }
 
     public void setFechaFinal(String fechaFinal) { this.fechaFinal = fechaFinal; }
+
+    public RealmList<VisitaDB> getVisitas() { return visitas; }
+
+    public void setVisitas(RealmList<VisitaDB> visitas) { this.visitas = visitas; }
 
 }

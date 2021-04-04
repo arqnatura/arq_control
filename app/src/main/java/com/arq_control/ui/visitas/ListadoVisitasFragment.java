@@ -23,9 +23,8 @@ public class ListadoVisitasFragment extends Fragment {
     OnVisitaInteractionListener mListener;
     RealmList<VisitaDB> visitasDBList;
 
-    VisitaDB visitaDB;
     ObraDB obraDB;
-    long idObra, idVisita;
+    long idObra;
 
     Realm realm;
 
@@ -50,17 +49,15 @@ public class ListadoVisitasFragment extends Fragment {
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-            // Rescatamos el ID de la visita.
+            // Rescatamos el ID de la obra.
             Bundle extras = getActivity().getIntent().getExtras();
             idObra = extras.getLong("obraId");
-            // Tabla sobre la que queremos ejecutar la consulta VisitaDB.class
+            // Tabla sobre la que queremos ejecutar la consulta ObraDB.class
             // Buscamos el primer elemento que concuerde con la consulta.
             obraDB = realm.where(ObraDB.class)
                     .equalTo(ObraDB.OBRADB_ID, idObra)
                     .findFirst();
 
-            // Hacemos la consulta a la DB y obtenemos todos los registros.
-//            visitasDBList = realm.where(VisitaDB.class)
             visitasDBList = obraDB.visitas;
 
             recyclerView.setAdapter(new MyVisitaRecyclerViewAdapter(getActivity(), visitasDBList,
@@ -86,7 +83,5 @@ public class ListadoVisitasFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-
 
 }

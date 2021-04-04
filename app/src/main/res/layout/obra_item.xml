@@ -71,7 +71,6 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="@string/iconovisitas"
-            android:onClick="OnObraVisitar"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewCamara"
             app:layout_constraintEnd_toStartOf="@+id/imageViewEditar"
             app:srcCompat="@drawable/ic_bookmarks_24px"

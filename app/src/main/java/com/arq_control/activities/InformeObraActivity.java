@@ -35,6 +35,19 @@ public class InformeObraActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_informe);
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabVisita);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Visitas de Obra", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                Intent miIntent = new Intent(InformeObraActivity.this, VisitasActivity.class);
+                miIntent.putExtra("obraId", obraDB.getId());
+                startActivity(miIntent);
+            }
+        });
+
         // Código del informe
         textViewInfo = (TextView) findViewById(R.id.texto_titulo_obra);
         // Rescatamos el ID de la obra.
@@ -60,19 +73,6 @@ public class InformeObraActivity extends AppCompatActivity {
                               "\n   Fecha de inicio: "+obraDB.getFechaInicio()+
                               "\n   Fecha final: "+obraDB.getFechaFinal()+
                               "\n   Número Identificación: "+obraDB.getId());
-
-
-         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabVisita);
-         fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Visitas de Obra", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                Intent miIntent = new Intent(InformeObraActivity.this, VisitasActivity.class);
-                miIntent.putExtra("obraId", obraDB.getId());
-                startActivity(miIntent);
-            }
-         });
 
     }
 

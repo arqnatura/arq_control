@@ -24,10 +24,10 @@ import io.realm.Realm;
 public class InformeVisitaActivity extends AppCompatActivity {
 
     TextView textViewInfo;
-    long idObra, idVisita;
+    long idVisita;
     Realm realm;
     VisitaDB visitaDB;
-//    ObraDB obraDB;
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView imageView;
 
@@ -64,7 +64,7 @@ public class InformeVisitaActivity extends AppCompatActivity {
                 "   Visita Nº: "+visitaDB.getNumeroVisita()+
                 "\nDescripción ________________\n"+visitaDB.getDescripcion()+
                 "\n   Fecha Visita: "+visitaDB.getFecha()+
-                "    Id: "+visitaDB.getIdVisita());
+                "    Id: "+visitaDB.getId());
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabFoto);
         imageView = (ImageView) findViewById(R.id.imageHeader);

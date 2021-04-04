@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:foreground="@mipmap/arq_regresar_36dp"
+        android:foreground="@drawable/ic_baseline_add_24"
         app:backgroundTint="@color/purple_500"
         app:maxImageSize="50dp"/>
 

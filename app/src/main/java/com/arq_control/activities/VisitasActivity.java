@@ -56,7 +56,7 @@ public class VisitasActivity extends AppCompatActivity
                 .add(R.id.containerVisitas, new ListadoVisitasFragment())
                 .commit();
 
-        // Rescatamos el ID de la visita.
+        // Rescatamos el ID de la obra en curso.
         Bundle extras = getIntent().getExtras();
         long idObra = extras.getLong("obraId");
 
@@ -81,14 +81,14 @@ public class VisitasActivity extends AppCompatActivity
     @Override
     public void OnVisitaClick(VisitaDB visitaDB) {
         Intent i = new Intent(this, InformeVisitaActivity.class);
-        i.putExtra(VisitaDB.VISITADB_ID, visitaDB.getIdVisita());
+        i.putExtra(VisitaDB.VISITADB_ID, visitaDB.getId());
         startActivity(i);
     }
 
     @Override
     public void OnVisitaEdit(VisitaDB mItem) {
         Toast.makeText(this, "Editar esta obra", Toast.LENGTH_SHORT).show();
-        dialogEditVisita = EditVisitaDialogFragment.newInstance(mItem.getIdVisita(),
+        dialogEditVisita = EditVisitaDialogFragment.newInstance(mItem.getId(),
                 mItem.getTituloVisita(), mItem.getFecha(), mItem.getNumeroVisita(),
                 mItem.getDescripcion());
         dialogEditVisita.show(getSupportFragmentManager(),"EditObraDialogo");
@@ -106,21 +106,20 @@ public class VisitasActivity extends AppCompatActivity
                 nuevaVisita.setNumeroVisita(numeroVisita);
                 nuevaVisita.setDescripcion(descripcion);
 
-                    obra.visitas.add(nuevaVisita);
-
-                realm.copyToRealmOrUpdate(nuevaVisita);
+                obra.visitas.add(nuevaVisita);
+//                realm.copyToRealmOrUpdate(nuevaVisita);
             }
         });
     }
 
     @Override
-    public void onVisitaActualizarClickListener(int id, String tituloVisita, String fecha,
+    public void onVisitaActualizarClickListener(long id, String tituloVisita, String fecha,
                                   long numeroVisita, String descripcion) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
                 VisitaDB nuevaVisita = new VisitaDB();
-                nuevaVisita.setIdVisita(id);
+                nuevaVisita.setId(id);
                 nuevaVisita.setTituloVisita(tituloVisita);
                 nuevaVisita.setFecha(fecha);
                 nuevaVisita.setNumeroVisita(numeroVisita);
@@ -129,7 +128,6 @@ public class VisitasActivity extends AppCompatActivity
                 realm.copyToRealmOrUpdate(nuevaVisita);
             }
         });
-
     }
 
     @Override
@@ -148,9 +146,9 @@ public class VisitasActivity extends AppCompatActivity
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
-                            long idVisitaEliminar = visitaDB.getIdVisita();
-                            VisitaDB visitaEliminar = realm.where(VisitaDB.class).equalTo(VisitaDB.VISITADB_ID,
-                                    idVisitaEliminar).findFirst();
+                            long idVisitaEliminar = visitaDB.getId();
+                            VisitaDB visitaEliminar = realm.where(VisitaDB.class)
+                                    .equalTo(VisitaDB.VISITADB_ID, idVisitaEliminar).findFirst();
                             visitaEliminar.deleteFromRealm();
                         }
                     });
@@ -168,4 +166,11 @@ public class VisitasActivity extends AppCompatActivity
             dialog.show();
         }
 
+/*    public void onClickVisitas(VisitaDB mItem) {
+        Intent miIntent = new Intent(this, VisitasActivity.class);
+        miIntent.putExtra("obraId", obra.getId());
+        startActivity(miIntent);
+    }
+
+ */
 }

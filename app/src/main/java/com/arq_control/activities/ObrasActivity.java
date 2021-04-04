@@ -29,7 +29,7 @@ public class ObrasActivity extends AppCompatActivity
 
     DialogFragment dialogoNuevaObra, dialogEditObra;
     Realm realm;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,29 +128,29 @@ public class ObrasActivity extends AppCompatActivity
         });
     }
 
-    @Override
-    public void onObraActualizarClickListener(long id, String promotor, String direccion,
-                                              String telefono, String titulo, String tipoObra,
-                                              String referencia, String fechaInicio,
-                                              String fechaFinal) {
+        @Override
+        public void onObraActualizarClickListener(long id, String promotor, String direccion,
+                String telefono, String titulo, String tipoObra,
+                String referencia, String fechaInicio, String fechaFinal) {
 
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                ObraDB nuevaObra = new ObraDB();
-                nuevaObra.setId(id);
-                nuevaObra.setPromotor(promotor);
-                nuevaObra.setDireccion(direccion);
-                nuevaObra.setTelefono(telefono);
-                nuevaObra.setTitulo(titulo);
-                nuevaObra.setTipoObra(tipoObra);
-                nuevaObra.setReferencia(referencia);
-                nuevaObra.setFechaInicio(fechaInicio);
-                nuevaObra.setFechaFinal(fechaFinal);
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    ObraDB editaObra = realm.where(ObraDB.class)
+                            .equalTo(ObraDB.OBRADB_ID, id)
+                            .findFirst();
+                    editaObra.setPromotor(promotor);
+                    editaObra.setDireccion(direccion);
+                    editaObra.setTelefono(telefono);
+                    editaObra.setTitulo(titulo);
+                    editaObra.setTipoObra(tipoObra);
+                    editaObra.setReferencia(referencia);
+                    editaObra.setFechaInicio(fechaInicio);
+                    editaObra.setFechaFinal(fechaFinal);
 
-                realm.copyToRealmOrUpdate(nuevaObra);
-            }
-        });
+                    realm.copyToRealmOrUpdate(editaObra);
+                }
+            });
     }
 
     @Override

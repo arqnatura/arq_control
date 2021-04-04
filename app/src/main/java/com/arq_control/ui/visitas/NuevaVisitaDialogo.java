@@ -15,16 +15,11 @@ import androidx.fragment.app.DialogFragment;
 
 import com.arq_control.R;
 
-import io.realm.Realm;
-
 public class NuevaVisitaDialogo extends DialogFragment {
 
     AlertDialog.Builder builder;
     OnNuevaVisitaListener mListenerB;
     View v;
-
-    long idObra;
-    Realm realm;
 
     EditText editTextTituloVisita, editTextFecha, editTextVisitas,
             editTextDescripcion, editTextAlmacenFoto;

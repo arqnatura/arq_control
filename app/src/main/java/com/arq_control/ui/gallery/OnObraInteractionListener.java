@@ -6,4 +6,5 @@ public interface OnObraInteractionListener {
     public void OnObraClick(ObraDB obraDB);
     public void OnObraEdit(ObraDB mItem);
     public void OnObraEliminar(ObraDB mItem);
+
 }

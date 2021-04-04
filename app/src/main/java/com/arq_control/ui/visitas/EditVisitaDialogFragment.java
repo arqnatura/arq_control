@@ -90,8 +90,8 @@ public class EditVisitaDialogFragment extends DialogFragment {
 
         builder.setView(v);
 
-        builder.setTitle("Editar Visita")
-            .setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
+        builder.setTitle("Editar Visita");
+        builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
 
                     String tituloVisita = editTextTituloVisita.getText().toString();
@@ -104,7 +104,7 @@ public class EditVisitaDialogFragment extends DialogFragment {
                     String descripcion = editTextDescripcion.getText().toString();
 
                     if (!tituloVisita.isEmpty() && !fecha.isEmpty()) {
-                        mListener.onVisitaActualizarClickListener(id, tituloVisita, fecha, numeroVisita,
+                        mListener.onVisitaActualizarClickListener(idVisita, tituloVisita, fecha, numeroVisita,
                                 descripcion);
 
                         Toast.makeText(getActivity(), "Visita editada", Toast.LENGTH_SHORT).show();

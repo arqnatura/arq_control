@@ -100,6 +100,7 @@ public class MyObraRecyclerViewAdapter
                 }
             }
         });
+
     }
 
     @Override
@@ -116,6 +117,7 @@ public class MyObraRecyclerViewAdapter
         public final ImageView imageViewEditar;
 //        public final TextView textViewReferencia;
         public final ImageView imageViewEliminarObra;
+        public final ImageView imageViewVisita;
 
         public ObraDB mItem;
 
@@ -130,6 +132,7 @@ public class MyObraRecyclerViewAdapter
             imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
 //            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
             imageViewEliminarObra = (ImageView) view.findViewById(R.id.imageViewEliminarObra);
+            imageViewVisita = (ImageView) view.findViewById(R.id.imageViewVisita);
         }
 
         @Override

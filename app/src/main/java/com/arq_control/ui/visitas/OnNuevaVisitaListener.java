@@ -7,7 +7,7 @@ public interface OnNuevaVisitaListener {
                                             long numeroVisita,
                                             String descripcion);
 
-   public void onVisitaActualizarClickListener(int id,
+   public void onVisitaActualizarClickListener(long id,
                                                 String tituloVisita,
                                                 String fecha,
                                                 long numeroVisita,
