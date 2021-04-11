@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:foreground="@mipmap/arq_regresar_36dp"
+        android:foreground="@mipmap/arq_casa_15dp"
+        android:foregroundTint="@color/white"
         app:backgroundTint="@color/purple_500" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

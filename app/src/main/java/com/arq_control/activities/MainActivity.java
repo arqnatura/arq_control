@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +22,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+
+    private static final int REQUEST_CHOOSE_PHONE = 1;
+    private static final int REQUEST_CHOOSE_CALENDAR = 1;
+    private Button buttonAgenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+//        buttonAgenda = (Button) findViewById(R.id.buttonAgenda);
+//        findViewById(R.id.buttonAgenda).setOnClickListener(this);
      }
 
     @Override
@@ -147,8 +157,8 @@ public class MainActivity extends AppCompatActivity {
  */
 
     // Acciones de los botones principales
-    public void initActivityVisitaNueva(View view){
-        Toast.makeText(this, "Crea una nueva visita de obra...", Toast.LENGTH_SHORT).show();
+    public void initActivityMaps(View view){
+        Toast.makeText(this, "Ver las obras en el mapa.", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, VisitasActivity.class);
         startActivity(i);
     }
@@ -157,15 +167,18 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, ObrasActivity.class);
         startActivity(i);
     }
-/*    public void initActivityArchivo(View view){
-        Toast.makeText(this, "Ver Listado de Obras Finalizadas...", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, FinalizadasFragment.class);
-        startActivity(i);
+    public void initActivityCalendar(View view){
+        Toast.makeText(this, "Ver Calendario...", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this, CalendarActivity.class);
+        startActivityForResult(i, REQUEST_CHOOSE_CALENDAR);
     }
- */
+
     public void initActivityAgenda(View view){
         Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ChoosePhoneActivity.class);
+        startActivityForResult(intent, REQUEST_CHOOSE_PHONE);
     }
+
 
     // Boton regresar y cerrar toda la aplicación.
     public void initActivitySalir(View view){
@@ -181,5 +194,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+/*    @Override
+    public void onClick(View v) {
+        Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent("arq_control.CHOOSE_PHONE");
+        startActivityForResult(intent, REQUEST_CHOOSE_PHONE);
+    }
+
+ */
 }
 

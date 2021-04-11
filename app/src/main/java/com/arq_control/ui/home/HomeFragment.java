@@ -5,17 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.arq_control.R;
-import com.arq_control.ui.finalizadas.FinalizadasFragment;
 
 public class HomeFragment extends Fragment {
 
@@ -37,23 +34,23 @@ public class HomeFragment extends Fragment {
 
     }
 
-    public void onClickListener(View v) {
+/*    public void onClickListener(View v) {
         switch (v.getId()){
-/*            case R.id.buttonPlus:
+            case R.id.buttonPlus:
                 cargarFragment(new FinalizadasFragment());
                 break;
             case R.id.buttonCurso:
                 cargarFragment(new FinalizadasFragment());
                 break;
- */           case R.id.buttonArchivo:
+            case R.id.buttonArchivo:
                 Toast.makeText(getActivity(), "Ver Listado de Obras Finalizadas...",
                         Toast.LENGTH_SHORT).show();
                 cargarFragment(new FinalizadasFragment());
                 break;
-  /*           case R.id.buttonAgenda:
+             case R.id.buttonAgenda:
                 cargarFragment(new OperadoresFragment());
                 break;
-  */
+
         }
     }
 
@@ -61,4 +58,5 @@ public class HomeFragment extends Fragment {
         FragmentTransaction ft =  getActivity().getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.nav_finalizadas, fragment).addToBackStack(null).commit();
     }
+    */
 }
