@@ -105,6 +105,7 @@ public class VisitasActivity extends AppCompatActivity
                 nuevaVisita.setFecha(fecha);
                 nuevaVisita.setNumeroVisita(numeroVisita);
                 nuevaVisita.setDescripcion(descripcion);
+//                nuevaVisita.setAlmacenFoto(almacenFoto);
 
                 obra.visitas.add(nuevaVisita);
 //                realm.copyToRealmOrUpdate(nuevaVisita);
@@ -124,6 +125,7 @@ public class VisitasActivity extends AppCompatActivity
                 nuevaVisita.setFecha(fecha);
                 nuevaVisita.setNumeroVisita(numeroVisita);
                 nuevaVisita.setDescripcion(descripcion);
+//                nuevaVisita.setAlmacenFoto(almacenFoto);
 
                 realm.copyToRealmOrUpdate(nuevaVisita);
             }

@@ -73,7 +73,6 @@ public class InformeObraActivity extends AppCompatActivity {
                               "\n   Fecha de inicio: "+obraDB.getFechaInicio()+
                               "\n   Fecha final: "+obraDB.getFechaFinal()+
                               "\n   Número Identificación: "+obraDB.getId());
-
     }
 
     @Override

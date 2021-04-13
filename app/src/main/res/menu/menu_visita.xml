@@ -1,0 +1,21 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.arq_control.activities.VisitasActivity">
+
+    <item
+        android:id="@+id/action_regresar"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:orderInCategory="100"
+        android:title="@string/BotonRegresar"
+        app:showAsAction="always"
+        app:navigationIcon="?attr/homeAsUpIndicator"/>
+    <item
+        android:id="@+id/action_guardar"
+        android:icon="@drawable/ic_baseline_save_24"
+        android:orderInCategory="100"
+        android:title="BotonGuardar"
+        app:showAsAction="always" />
+
+</menu>

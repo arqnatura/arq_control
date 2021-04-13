@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.arq_control.R;
 import com.arq_control.models.VisitaDB;
+import com.bumptech.glide.Glide;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmChangeListener;
@@ -67,14 +68,12 @@ public class MyVisitaRecyclerViewAdapter
 //        holder.textViewVisitas.setText((int) holder.mItem.getNumeroVisita());
         holder.textViewVisitas.setText(holder.mItem.getNumeroVisita()+" Visita/s");
 
- /*       if(!holder.mItem.getAlmacenFoto().isEmpty()) {
+        // Cargamos la imagen en el imageView del CardView.
+        if(!holder.mItem.getTituloVisita().isEmpty()) {
             Glide.with(ctx)
                     .load(holder.mItem.getAlmacenFoto())
                     .into(holder.imageViewCamara);
         }
-
-  */
-
 
         //Activamos el evento clic que activa el informe de visita seleccionado.
         holder.mView.setOnClickListener((v) -> {
@@ -83,7 +82,7 @@ public class MyVisitaRecyclerViewAdapter
             }
         });
 
-        //Definimos el evento de editar una obra
+        //Definimos el evento de editar una visita
         holder.imageViewEditarVisita.setOnClickListener((v) ->  {
             if (null != mListener){
                 // Notifique a la interfaz la devolucion de la llamada que se ha

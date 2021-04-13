@@ -25,9 +25,9 @@ public class EditVisitaDialogFragment extends DialogFragment {
 
     private long idVisita;
     private long numeroVisita;
-    private String tituloVisita, fecha, descripcion, almacenFoto;
+    private String tituloVisita, fecha, descripcion;
     EditText editTextTituloVisita, editTextFecha, editTextVisitas,
-            editTextDescripcion, editTextAlmacenFoto;
+            editTextDescripcion;
     Context ctx;
 
     public EditVisitaDialogFragment() {
@@ -43,7 +43,6 @@ public class EditVisitaDialogFragment extends DialogFragment {
         args.putString(VisitaDB.VISITADB_FECHA, f);
         args.putString(VisitaDB.VISITADB_NUMEROVISITA, String.valueOf(v));
         args.putString(VisitaDB.VISITADB_DESCRIPCION, d);
-//        args.putString(VisitaDB.VISITADB_ALMACENFOTO, a);
 
         fragment.setArguments(args);
 
@@ -59,7 +58,6 @@ public class EditVisitaDialogFragment extends DialogFragment {
             fecha = getArguments().getString(VisitaDB.VISITADB_FECHA);
             numeroVisita = Long.parseLong(getArguments().getString(VisitaDB.VISITADB_NUMEROVISITA));
             descripcion = getArguments().getString(VisitaDB.VISITADB_DESCRIPCION);
- //           almacenFoto = getArguments().getString(VisitaDB.VISITADB_ALMACENFOTO);
         }
     }
 
@@ -78,15 +76,12 @@ public class EditVisitaDialogFragment extends DialogFragment {
         editTextFecha = v.findViewById(R.id.editTextFecha);
         editTextVisitas = v.findViewById(R.id.editTextNumeroVisita);
         editTextDescripcion= v.findViewById(R.id.editTextDescripcion);
-//        editTextAlmacenFoto = (EditText)  v.findViewById(R.id.editTextAlmacenFoto);
 
         // Precargamos el formulario
         editTextTituloVisita.setText(tituloVisita);
         editTextFecha.setText(fecha);
         editTextVisitas.setText(Long.toString((int) numeroVisita));
         editTextDescripcion.setText(descripcion);
-//        editTextAlmacenFoto.setText(almacenFoto);
-
 
         builder.setView(v);
 
@@ -96,9 +91,6 @@ public class EditVisitaDialogFragment extends DialogFragment {
 
                     String tituloVisita = editTextTituloVisita.getText().toString();
                     String fecha = editTextFecha.getText().toString();
-
-    //                    String almacenFoto = editTextAlmacenFoto.getText().toString();
-                    //long visitas = Long.parseLong(editTextVisitas.getText().toString());
                     long numeroVisita = Long.parseLong(editTextVisitas.getText().toString());
 
                     String descripcion = editTextDescripcion.getText().toString();
@@ -137,5 +129,4 @@ public class EditVisitaDialogFragment extends DialogFragment {
                     + " must implement OnNuevaObraListener");
         }
     }
-
 }

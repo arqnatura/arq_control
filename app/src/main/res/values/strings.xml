@@ -106,5 +106,8 @@
     <string name="eliminarvisita">Eliminar Visita</string>
     <string name="fab1">FAB1</string>
     <string name="fab2">Fab2</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="buscar_fotografia">Buscar Fotografía</string>
+    <string name="hacer_fotografia">Hacer Fotografía</string>
 
 </resources>

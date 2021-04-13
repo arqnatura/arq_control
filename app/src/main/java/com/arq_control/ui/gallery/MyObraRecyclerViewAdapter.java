@@ -75,6 +75,7 @@ public class MyObraRecyclerViewAdapter
         }
  */
 
+
         //Activamos el evento clic que activa el informe de obra seleccionado.
         holder.mView.setOnClickListener((v) -> {
             if (null != mListener){
@@ -113,7 +114,7 @@ public class MyObraRecyclerViewAdapter
         public final TextView textViewTitulo;
         public final TextView textViewTipo;
 //        public final TextView textViewVisitas;
-//        public final ImageView imageViewCamara;
+        public final ImageView imageViewCamara;
         public final ImageView imageViewEditar;
 //        public final TextView textViewReferencia;
         public final ImageView imageViewEliminarObra;
@@ -128,7 +129,7 @@ public class MyObraRecyclerViewAdapter
             textViewTitulo = (TextView) view.findViewById(R.id.textViewTitulo);
             textViewTipo = (TextView) view.findViewById(R.id.textViewTipo);
 //            textViewVisitas = (TextView) view.findViewById(R.id.textViewVisitas);
-//            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
+            imageViewCamara = (ImageView) view.findViewById(R.id.imageViewCamara);
             imageViewEditar = (ImageView) view.findViewById(R.id.imageViewEditar);
 //            textViewReferencia = (TextView) view.findViewById(R.id.textViewReferencia);
             imageViewEliminarObra = (ImageView) view.findViewById(R.id.imageViewEliminarObra);
