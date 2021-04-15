@@ -17,7 +17,8 @@ import io.realm.RealmList;
 import io.realm.RealmResults;
 
 
-public class MyObraCortaRecyclerViewAdapter extends RecyclerView.Adapter<MyObraCortaRecyclerViewAdapter.ViewHolder> {
+public class MyObraCortaRecyclerViewAdapter
+        extends RecyclerView.Adapter<MyObraCortaRecyclerViewAdapter.ViewHolder> {
 
     private final RealmResults<ObraDB> mValues;
     private final OnObraInteractionListener mListener;

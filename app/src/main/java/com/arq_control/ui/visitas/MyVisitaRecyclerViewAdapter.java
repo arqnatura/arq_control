@@ -62,7 +62,6 @@ public class MyVisitaRecyclerViewAdapter
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-
         holder.textViewTitulo.setText(holder.mItem.getTituloVisita());
         holder.textViewFecha.setText(holder.mItem.getFecha());
 //        holder.textViewVisitas.setText((int) holder.mItem.getNumeroVisita());
@@ -74,7 +73,6 @@ public class MyVisitaRecyclerViewAdapter
                     .load(holder.mItem.getAlmacenFoto())
                     .into(holder.imageViewCamara);
         }
-
         //Activamos el evento clic que activa el informe de visita seleccionado.
         holder.mView.setOnClickListener((v) -> {
             if (null != mListener){

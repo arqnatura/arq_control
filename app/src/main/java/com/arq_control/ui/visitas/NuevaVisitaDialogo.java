@@ -22,7 +22,7 @@ public class NuevaVisitaDialogo extends DialogFragment {
     View v;
 
     EditText editTextTituloVisita, editTextFecha, editTextVisitas,
-            editTextDescripcion, editTextAlmacenFoto;
+            editTextDescripcion;
     Context ctx;
 
 
@@ -40,7 +40,7 @@ public class NuevaVisitaDialogo extends DialogFragment {
         editTextFecha = (EditText)  v.findViewById(R.id.editTextFecha);
         editTextVisitas = (EditText)  v.findViewById(R.id.editTextNumeroVisita);
         editTextDescripcion= (EditText)  v.findViewById(R.id.editTextDescripcion);
-//        editTextAlmacenFoto = (EditText)  v.findViewById(R.id.editTextAlmacenFoto);
+
         builder.setView(v);
 
         builder.setTitle("Formulario Nueva Visita");
@@ -48,7 +48,6 @@ public class NuevaVisitaDialogo extends DialogFragment {
             String tituloVisita = editTextTituloVisita.getText().toString();
             String fecha = editTextFecha.getText().toString();
 
-//            String almacenFoto = editTextAlmacenFoto.getText().toString();
             // Evitamos que el campo Visitas Previstas quede vacío.
             long numeroVisita;
             if (!editTextVisitas.getText().toString().isEmpty()) {

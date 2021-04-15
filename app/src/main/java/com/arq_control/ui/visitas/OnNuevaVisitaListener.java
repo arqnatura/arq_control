@@ -11,6 +11,7 @@ public interface OnNuevaVisitaListener {
                                                 String tituloVisita,
                                                 String fecha,
                                                 long numeroVisita,
-                                                String descripcion);
+                                                String descripcion,
+                                                String almacenFoto);
 
 }

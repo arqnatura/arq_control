@@ -90,7 +90,7 @@ public class VisitasActivity extends AppCompatActivity
         Toast.makeText(this, "Editar esta obra", Toast.LENGTH_SHORT).show();
         dialogEditVisita = EditVisitaDialogFragment.newInstance(mItem.getId(),
                 mItem.getTituloVisita(), mItem.getFecha(), mItem.getNumeroVisita(),
-                mItem.getDescripcion());
+                mItem.getDescripcion(), mItem.getAlmacenFoto());
         dialogEditVisita.show(getSupportFragmentManager(),"EditObraDialogo");
     }
 
@@ -115,7 +115,7 @@ public class VisitasActivity extends AppCompatActivity
 
     @Override
     public void onVisitaActualizarClickListener(long id, String tituloVisita, String fecha,
-                                  long numeroVisita, String descripcion) {
+                                  long numeroVisita, String descripcion, String almacenFoto) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -125,7 +125,7 @@ public class VisitasActivity extends AppCompatActivity
                 nuevaVisita.setFecha(fecha);
                 nuevaVisita.setNumeroVisita(numeroVisita);
                 nuevaVisita.setDescripcion(descripcion);
-//                nuevaVisita.setAlmacenFoto(almacenFoto);
+                nuevaVisita.setAlmacenFoto(almacenFoto);
 
                 realm.copyToRealmOrUpdate(nuevaVisita);
             }

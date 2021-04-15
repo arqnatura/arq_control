@@ -109,5 +109,7 @@
     <string name="cancelar">Cancelar</string>
     <string name="buscar_fotografia">Buscar Fotografía</string>
     <string name="hacer_fotografia">Hacer Fotografía</string>
+    <string name="numero">Nº</string>
+    <string name="path">Almacen Fotografía:</string>
 
 </resources>

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaScannerConnection;
@@ -30,6 +31,7 @@ import com.arq_control.R;
 import com.arq_control.models.ObraDB;
 import com.arq_control.models.VisitaDB;
 import com.arq_control.ui.visitas.OnNuevaPhotoListener;
+import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -54,12 +56,12 @@ public class InformeVisitaActivity extends AppCompatActivity
     // Parámetros para la toma y guardado de fotografías
     private final String CARPETA_RAIZ="imagenesArqControl/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"fotosVisitas";
-    //final int COD_SELECCIONA=10;
-    private static final int COD_SELECCIONA = 10;
+    final int COD_SELECCION=10;
+    //private static final int COD_SELECCION = 10;
     final int COD_FOTO=20;
     private ImageView imageView;
-    private String newPath;
-    private Uri existPath;
+    private String path;
+//    private Uri existPath;
     private File fileImagen;
 
 //    static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -74,12 +76,10 @@ public class InformeVisitaActivity extends AppCompatActivity
 
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_visita);
 
-        imageView = (ImageView) findViewById(R.id.imageHeader);
 /*        String uri = String.valueOf(existPath);
         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
         Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
         imageView.setImageDrawable(imagen);
-
  */
 
         fab = (FloatingActionButton) findViewById(R.id.fabFoto);
@@ -126,6 +126,13 @@ public class InformeVisitaActivity extends AppCompatActivity
                 "\n   Fecha Visita: "+visitaDB.getFecha()+
                 "    Id: "+visitaDB.getId()+
                 "\n   Path: "+visitaDB.getAlmacenFoto());
+
+        // Cargamos la imagen en el imageHeader.
+        imageView = (ImageView) findViewById(R.id.imageHeader);
+            Glide.with(this)
+                    .load(visitaDB.getAlmacenFoto())
+                    .into(imageView);
+
 
     }
 
@@ -201,8 +208,7 @@ public class InformeVisitaActivity extends AppCompatActivity
 
     private void cargarImagen(View view) {
 
-        final CharSequence[] opciones={"Hacer una Fotografía", "Galería de Imágenes",
-                "CANCELAR"};
+        final CharSequence[] opciones={"Hacer una Fotografía","Galería de Imágenes","CANCELAR"};
         final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(
                 InformeVisitaActivity.this);
         alertOpciones.setTitle("Selecciona una Opción");
@@ -213,38 +219,38 @@ public class InformeVisitaActivity extends AppCompatActivity
                     hacerFotografia();
                 }else{
                     if (opciones[i].equals("Galería de Imágenes")){
-                        Intent intent = new Intent(Intent.ACTION_PICK,
-                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        //ACTION_GET_CONTENT accede a todos los contenidos. ACTION_PICK a la Galería.
+                        Intent intent = new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         intent.setType("image/");
-                        startActivityForResult(intent.createChooser(intent,
-                                "Selecciona la Aplicación"),COD_SELECCIONA);
+                        startActivityForResult(intent.createChooser(intent,"Selecciona la Aplicación"),COD_SELECCION);
                     }else{
                         dialogInterface.dismiss();
                     }
                 }
             }
         });
+
         alertOpciones.show();
     }
 
     private void hacerFotografia() {
-
+        // Creamos una nueva imagen y su ruta
         fileImagen = new File(Environment.getExternalStorageDirectory(),RUTA_IMAGEN);
-        Boolean esCreada = fileImagen.exists();
+        Boolean esCreada = fileImagen.exists();  // Si no existe el archivo de la imagen la creamos.
         String nombreImagen = "";
-
         if(esCreada==false){
             esCreada=fileImagen.mkdirs();
         }
         if(esCreada==true){
-            Long consecutivo = System.currentTimeMillis()/1000;
+            Long consecutivo = System.currentTimeMillis()/1000; // Devuelve la hora actual.
             nombreImagen=(consecutivo.toString()+".jpg");
-            newPath = Environment.getExternalStorageDirectory()+
-                File.separator+RUTA_IMAGEN+File.separator+nombreImagen;
         }
+        // Ruta de almacenamiento.
+        path = Environment.getExternalStorageDirectory()+File.separator+RUTA_IMAGEN+
+                File.separator+nombreImagen;
 
-        fileImagen = new File(newPath);
-
+        // Lanzamos la opción de la cámara del dispositivo.
+        fileImagen = new File(path);
         Intent intent = null;
         intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -256,47 +262,52 @@ public class InformeVisitaActivity extends AppCompatActivity
             intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(fileImagen));
         }
         startActivityForResult(intent,COD_FOTO);
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-/*        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            imageView.setImageBitmap(imageBitmap);
- */
+
         if(resultCode==RESULT_OK){
 
             switch (requestCode){
                 // Caso de seleccionar una fotografía del dispositivo
-                case COD_SELECCIONA:
-                    existPath=data.getData();
-                    imageView.setImageURI(existPath);
+                case COD_SELECCION:
+                    Uri existPath=data.getData();
+                    //imageView.setImageURI(existPath);
+                    String[] projection = {MediaStore.Images.Media.DATA};
 
-                    /*Bundle extras = data.getExtras();
-                    Bitmap imageBitmap = (Bitmap) extras.get("data");
-                    ImageView imageView=(ImageView)findViewById(R.id.imageHeader);  //"destinoFoto" es el imageView seleccionad en la APP para mostrar la fotografía tomada.
-                    imageView.setImageBitmap(imageBitmap);
-                     */
+                    Cursor cursor = getContentResolver().query(existPath, projection,
+                            null, null, null);
+                    cursor.moveToFirst();
+
+                    int columnIndex = cursor.getColumnIndex(projection[0]);
+                    path = cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Bitmap bitmap = BitmapFactory.decodeFile(path);
+                    imageView.setImageBitmap(bitmap);
 
                     break;
                 // Caso de hacer una nueva fotografía
                 case COD_FOTO:
-                    MediaScannerConnection.scanFile(this,new String[]{newPath}, null,
+                    MediaScannerConnection.scanFile(this,new String[]{path}, null,
                             new MediaScannerConnection.OnScanCompletedListener(){
                                 @Override
-                                public void onScanCompleted(String path, Uri uri) {
+                                public void onScanCompleted(String s, Uri uri) {
                                     Log.i("Ruta de almacenamiento","Path: "+path);
                                 }
                             });
                     // Asignamos la foto al imageView.
-                    Bitmap bitmap = BitmapFactory.decodeFile(newPath);
+                    bitmap = BitmapFactory.decodeFile(path);
                     imageView.setImageBitmap(bitmap);
 
                     break;
             }
         }
+
+        Toast.makeText(this, "Debe guardar la fotografía.", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -308,10 +319,10 @@ public class InformeVisitaActivity extends AppCompatActivity
                             .equalTo(VisitaDB.VISITADB_ID, idVisita)
                             .findFirst();
                     editVisita.setAlmacenFoto(almacenFoto);
+                    // Crea o actualiza la ruta de la fotografía
                     realm.copyToRealmOrUpdate(editVisita);
                 }
             });
-
     }
 
 
@@ -329,11 +340,7 @@ public class InformeVisitaActivity extends AppCompatActivity
             return true;
         }
         if (id == R.id.action_guardar) {
-            if(newPath!=null){
-                onPhotoGuardarClickListener(newPath);
-            }else{
-                onPhotoGuardarClickListener(String.valueOf(existPath));
-            }
+            onPhotoGuardarClickListener(path);
             Toast.makeText(this, "Imagen guardada.", Toast.LENGTH_LONG).show();
             return true;
         }

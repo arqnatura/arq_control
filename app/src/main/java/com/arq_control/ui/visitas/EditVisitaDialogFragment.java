@@ -25,17 +25,19 @@ public class EditVisitaDialogFragment extends DialogFragment {
 
     private long idVisita;
     private long numeroVisita;
-    private String tituloVisita, fecha, descripcion;
+    private String tituloVisita, fecha, descripcion, almacenFoto;
     EditText editTextTituloVisita, editTextFecha, editTextVisitas,
-            editTextDescripcion;
+            editTextDescripcion, editTextAlmacenFoto;
     Context ctx;
+
+
 
     public EditVisitaDialogFragment() {
         // Required empty public constructor
     }
 
     public static EditVisitaDialogFragment newInstance(long id, String t, String f, long v,
-                                                       String d) {
+                                                       String d, String a) {
         EditVisitaDialogFragment fragment = new EditVisitaDialogFragment();
         Bundle args = new Bundle();
         args.putLong(VisitaDB.VISITADB_ID, id);
@@ -43,6 +45,7 @@ public class EditVisitaDialogFragment extends DialogFragment {
         args.putString(VisitaDB.VISITADB_FECHA, f);
         args.putString(VisitaDB.VISITADB_NUMEROVISITA, String.valueOf(v));
         args.putString(VisitaDB.VISITADB_DESCRIPCION, d);
+        args.putString(VisitaDB.VISITADB_ALMACENFOTO, a);
 
         fragment.setArguments(args);
 
@@ -58,6 +61,7 @@ public class EditVisitaDialogFragment extends DialogFragment {
             fecha = getArguments().getString(VisitaDB.VISITADB_FECHA);
             numeroVisita = Long.parseLong(getArguments().getString(VisitaDB.VISITADB_NUMEROVISITA));
             descripcion = getArguments().getString(VisitaDB.VISITADB_DESCRIPCION);
+            almacenFoto = getArguments().getString(VisitaDB.VISITADB_ALMACENFOTO);
         }
     }
 
@@ -76,12 +80,15 @@ public class EditVisitaDialogFragment extends DialogFragment {
         editTextFecha = v.findViewById(R.id.editTextFecha);
         editTextVisitas = v.findViewById(R.id.editTextNumeroVisita);
         editTextDescripcion= v.findViewById(R.id.editTextDescripcion);
+        editTextAlmacenFoto= v.findViewById(R.id.editTextAlmacenFoto);
 
         // Precargamos el formulario
         editTextTituloVisita.setText(tituloVisita);
         editTextFecha.setText(fecha);
         editTextVisitas.setText(Long.toString((int) numeroVisita));
         editTextDescripcion.setText(descripcion);
+        editTextAlmacenFoto.setText(almacenFoto);
+
 
         builder.setView(v);
 
@@ -89,15 +96,15 @@ public class EditVisitaDialogFragment extends DialogFragment {
         builder.setPositiveButton("Guardar", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
 
-                    String tituloVisita = editTextTituloVisita.getText().toString();
-                    String fecha = editTextFecha.getText().toString();
-                    long numeroVisita = Long.parseLong(editTextVisitas.getText().toString());
-
-                    String descripcion = editTextDescripcion.getText().toString();
+                    tituloVisita = editTextTituloVisita.getText().toString();
+                    fecha = editTextFecha.getText().toString();
+                    numeroVisita = Long.parseLong(editTextVisitas.getText().toString());
+                    descripcion = editTextDescripcion.getText().toString();
+                    almacenFoto = editTextAlmacenFoto.getText().toString();
 
                     if (!tituloVisita.isEmpty() && !fecha.isEmpty()) {
                         mListener.onVisitaActualizarClickListener(idVisita, tituloVisita, fecha, numeroVisita,
-                                descripcion);
+                                descripcion, almacenFoto);
 
                         Toast.makeText(getActivity(), "Visita editada", Toast.LENGTH_SHORT).show();
                         // Cierra el diálogo
