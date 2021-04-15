@@ -93,6 +93,7 @@ public class InformeVisitaActivity extends AppCompatActivity
                 }else{
                     fab.setEnabled(false);
                 }
+
             }
         });
 
@@ -114,6 +115,13 @@ public class InformeVisitaActivity extends AppCompatActivity
                 .equalTo(obraDB.OBRADB_ID, idObra)
                 .findFirst();
  */
+        // Cargamos la imagen en el imageHeader.
+        imageView = (ImageView) findViewById(R.id.imageHeader);
+        if(visitaDB.getAlmacenFoto() != null) {
+            Glide.with(this)
+                    .load(visitaDB.getAlmacenFoto())
+                    .into(imageView);
+        }
 
         toolBarLayout.setTitle(visitaDB.getTituloVisita());
 
@@ -126,13 +134,6 @@ public class InformeVisitaActivity extends AppCompatActivity
                 "\n   Fecha Visita: "+visitaDB.getFecha()+
                 "    Id: "+visitaDB.getId()+
                 "\n   Path: "+visitaDB.getAlmacenFoto());
-
-        // Cargamos la imagen en el imageHeader.
-        imageView = (ImageView) findViewById(R.id.imageHeader);
-            Glide.with(this)
-                    .load(visitaDB.getAlmacenFoto())
-                    .into(imageView);
-
 
     }
 
@@ -229,7 +230,6 @@ public class InformeVisitaActivity extends AppCompatActivity
                 }
             }
         });
-
         alertOpciones.show();
     }
 
@@ -251,8 +251,8 @@ public class InformeVisitaActivity extends AppCompatActivity
 
         // Lanzamos la opción de la cámara del dispositivo.
         fileImagen = new File(path);
-        Intent intent = null;
-        intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //Intent intent = null; Falla al cargar la primera imagen
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
             String authorities=getApplicationContext().getPackageName()+".provider";
@@ -306,7 +306,6 @@ public class InformeVisitaActivity extends AppCompatActivity
                     break;
             }
         }
-
         Toast.makeText(this, "Debe guardar la fotografía.", Toast.LENGTH_LONG).show();
     }
 

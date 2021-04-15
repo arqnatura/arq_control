@@ -65,7 +65,7 @@ public class MyVisitaRecyclerViewAdapter
         holder.textViewTitulo.setText(holder.mItem.getTituloVisita());
         holder.textViewFecha.setText(holder.mItem.getFecha());
 //        holder.textViewVisitas.setText((int) holder.mItem.getNumeroVisita());
-        holder.textViewVisitas.setText(holder.mItem.getNumeroVisita()+" Visita/s");
+        holder.textViewVisitas.setText(holder.mItem.getNumeroVisita()+" Visit/s");
 
         // Cargamos la imagen en el imageView del CardView.
         if(!holder.mItem.getTituloVisita().isEmpty()) {
