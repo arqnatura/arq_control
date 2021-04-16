@@ -16,10 +16,6 @@
             android:id="@+id/nav_finalizadas"
             android:icon="@drawable/ic_menu_gallery_bookmark"
             android:title="@string/obras_finalizadas" />
-        <item
-            android:id="@+id/nav_operadores"
-            android:icon="@drawable/ic_menu_bookmarks"
-            android:title="@string/menu_operadores" />
     </group>
     <group android:id="@string/comunicaciones" >
             <item

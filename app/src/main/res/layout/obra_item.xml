@@ -17,15 +17,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="2dp">
+        android:padding="6dp">
 
         <ImageView
             android:id="@+id/imageViewCamara"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
             android:contentDescription="@string/camara"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,23 +64,12 @@
             app:layout_constraintStart_toStartOf="@+id/textViewTitulo" />
 
         <ImageView
-            android:id="@+id/imageViewVisita"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@string/iconovisitas"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewCamara"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewEditar"
-            app:srcCompat="@drawable/ic_bookmarks_24px"
-            tools:ignore="VectorDrawableCompat" />
-
-        <ImageView
             android:id="@+id/imageViewEditar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:contentDescription="@string/botoneditar"
-            app:layout_constraintBottom_toBottomOf="@+id/imageViewVisita"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewCamara"
             app:layout_constraintEnd_toStartOf="@+id/imageViewEliminarObra"
-            app:layout_constraintTop_toTopOf="@+id/imageViewVisita"
             app:srcCompat="@drawable/ic_baseline_edit_24" />
 
         <ImageView

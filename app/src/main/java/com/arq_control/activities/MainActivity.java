@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
     // Acciones de los botones principales
     public void initActivityMaps(View view){
         Toast.makeText(this, "Ver las obras en el mapa.", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this, VisitasActivity.class);
+        Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
     }
     public void initActivityObraCurso(View view){
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void initActivityAgenda(View view){
         Toast.makeText(this, "Ver Listado de Operadores...", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, ChoosePhoneActivity.class);
+        Intent intent = new Intent(this, PhoneActivity.class);
         startActivityForResult(intent, REQUEST_CHOOSE_PHONE);
     }
 

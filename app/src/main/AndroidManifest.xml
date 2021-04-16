@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.arq_control">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
@@ -21,12 +22,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Arq_control">
-
+        <activity android:name=".activities.MapsActivity"></activity>
         <activity
             android:name=".activities.SplashScreen"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,7 +46,7 @@
         <activity
             android:name=".activities.InformeObraActivity"
             android:label="@string/informe_Obra"
-            android:theme="@style/Theme.Arq_control.NoActionBar"></activity>
+            android:theme="@style/Theme.Arq_control.NoActionBar" />
         <activity
             android:name=".activities.VisitasActivity"
             android:label="@string/title_activity_visita"
@@ -52,15 +54,16 @@
         <activity
             android:name=".activities.InformeVisitaActivity"
             android:label="Informe Visita"
-            android:theme="@style/Theme.Arq_control.NoActionBar"></activity>
+            android:theme="@style/Theme.Arq_control.NoActionBar" />
         <activity
-            android:name=".activities.ChoosePhoneActivity"
+            android:name=".activities.PhoneActivity"
             android:label="Listado de Operadores"
             android:theme="@style/Theme.Arq_control.NoActionBar">
-                <intent-filter>
-                    <action android:name="android.intent.action.MAIN" />
-                    <category android:name="android.intent.category.LAUNCHER" />
-                </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.CalendarActivity"
@@ -68,9 +71,11 @@
             android:theme="@style/Theme.Arq_control.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -78,7 +83,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
     </application>
 

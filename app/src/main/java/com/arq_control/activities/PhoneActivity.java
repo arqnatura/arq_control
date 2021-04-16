@@ -16,7 +16,7 @@ import com.arq_control.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChoosePhoneActivity extends AppCompatActivity {
+public class PhoneActivity extends AppCompatActivity {
 
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
     private ListView lstNames;
@@ -24,7 +24,7 @@ public class ChoosePhoneActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_phone);
+        setContentView(R.layout.activity_phone);
         setTitle("Busca un teléfono");
 
         // Encuentra la vista de lista

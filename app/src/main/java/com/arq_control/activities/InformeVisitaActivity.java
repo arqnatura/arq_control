@@ -56,12 +56,10 @@ public class InformeVisitaActivity extends AppCompatActivity
     // Parámetros para la toma y guardado de fotografías
     private final String CARPETA_RAIZ="imagenesArqControl/";
     private final String RUTA_IMAGEN=CARPETA_RAIZ+"fotosVisitas";
-    final int COD_SELECCION=10;
-    //private static final int COD_SELECCION = 10;
-    final int COD_FOTO=20;
+    private final int COD_SELECCION=10;
+    private final int COD_FOTO=20;
     private ImageView imageView;
     private String path;
-//    private Uri existPath;
     private File fileImagen;
 
 //    static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -75,12 +73,6 @@ public class InformeVisitaActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout_visita);
-
-/*        String uri = String.valueOf(existPath);
-        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-        Drawable imagen = ContextCompat.getDrawable(getApplicationContext(), imageResource);
-        imageView.setImageDrawable(imagen);
- */
 
         fab = (FloatingActionButton) findViewById(R.id.fabFoto);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -133,8 +125,7 @@ public class InformeVisitaActivity extends AppCompatActivity
                 "\nDescripción _______________\n"+visitaDB.getDescripcion()+
                 "\n   Fecha Visita: "+visitaDB.getFecha()+
                 "    Id: "+visitaDB.getId()+
-                "\n   Path: "+visitaDB.getAlmacenFoto());
-
+                "\n   Almacen Foto (path): "+visitaDB.getAlmacenFoto());
     }
 
     private boolean validarPermisos() {
@@ -155,8 +146,24 @@ public class InformeVisitaActivity extends AppCompatActivity
         }
         return false;
     }
+    private void cargarDialogoRecomendacion() {
+        // Diálogo donde le indicamos al usuario de que debe dar los permisos a la aplicación
+        AlertDialog.Builder dialogo=new AlertDialog.Builder(InformeVisitaActivity.this);
+        dialogo.setTitle("Permisos Desactivados");
+        dialogo.setMessage("No aceptar los permisos afectará al funcionamiento de la cámara");
+        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, CAMERA},100);
+                }
+            }
+        });
+        dialogo.show();
+    }
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode==100){
             if(grantResults.length==2 && grantResults[0]==PackageManager.PERMISSION_GRANTED
@@ -190,25 +197,11 @@ public class InformeVisitaActivity extends AppCompatActivity
         });
         alertOpciones.show();
     }
-    private void cargarDialogoRecomendacion() {
-        // Diálogo donde le indicamos al usuario de que debe dar los permisos a la aplicación
-        AlertDialog.Builder dialogo=new AlertDialog.Builder(InformeVisitaActivity.this);
-        dialogo.setTitle("Permisos Desactivados");
-        dialogo.setMessage("Aceptar los permisos para el funcionamiento de la aplicación");
-        dialogo.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int i) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE, CAMERA},100);
-                }
-            }
-        });
-        dialogo.show();
-    }
 
 
     private void cargarImagen(View view) {
-
+        // Secuenciamos el diálogo de acceso a la fotografía en la Galería de imágenes o
+        // lanzamos el método de hacer una nueva fotografía
         final CharSequence[] opciones={"Hacer una Fotografía","Galería de Imágenes","CANCELAR"};
         final AlertDialog.Builder alertOpciones = new AlertDialog.Builder(
                 InformeVisitaActivity.this);
@@ -253,7 +246,10 @@ public class InformeVisitaActivity extends AppCompatActivity
         fileImagen = new File(path);
         //Intent intent = null; Falla al cargar la primera imagen
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
+ /*       if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+        }
+  */
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
             String authorities=getApplicationContext().getPackageName()+".provider";
             Uri imageUri= FileProvider.getUriForFile(this,authorities,fileImagen);
@@ -309,6 +305,7 @@ public class InformeVisitaActivity extends AppCompatActivity
         Toast.makeText(this, "Debe guardar la fotografía.", Toast.LENGTH_LONG).show();
     }
 
+    // Almacenamos la dirección de almacenamiemnto de la fotografía en la DB.
     @Override
     public void onPhotoGuardarClickListener(String almacenFoto) {
             realm.executeTransaction(new Realm.Transaction() {
